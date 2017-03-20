@@ -1,11 +1,8 @@
 #!/usr/bin/env python
 import os
 import sys
-<<<<<<< HEAD
 import string
-=======
 import math
->>>>>>> f57bd857e02a707e78d0cb8eb714c3ca047b595d
 
 if __name__ == "__main__":
     os.environ.setdefault("DJANGO_SETTINGS_MODULE", "project.settings")
