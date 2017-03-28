@@ -14,9 +14,13 @@ class Movie(models.Model):
     def __str__(self):
         return self.name
 
+
 class Review(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
-    review = models.CharField(max_length=1000)
+    review = models.TextField(max_length=1000)
     score = models.IntegerField()
     reviewer = models.CharField(max_length=100)
     review_date = models.DateField(auto_now_add=True)
+
+    def __str__(self):
+        return str(self.movie) + ' - ' + self.reviewer + ' ' + str(self.review_date)
