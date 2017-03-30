@@ -3,10 +3,11 @@
 <head>
 <title> - Free Popcorn - สังคมนักดูหนังแห่งสยามประเทศ!!! - </title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
-<link rel="stylesheet" href="css/bootstrap.css" type="text/css">
+{% load staticfiles %}
+<link rel="stylesheet" type="text/css" href="{% static 'review_movie/css/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'review_movie/css/bootstrap.css' %}">
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script type="text/javascript" src="js/bootstrap.js"></script>
+<script type="text/javascript" src="{% static 'review_movie/js/bootstrap.js' %}"></script>
 <!-- <script type="text/javascript" src="js/bootstrap.js"></script> -->
 
 <!-- <script type="text/javascript">
@@ -44,7 +45,7 @@
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#"><img class="profile" src="img/Profile1.png"></a></li>
+            <li><a href="#"><img class="profile" src="{% static 'review_movie/img/Profile1.png' %}"></a></li>
             <li><a href="#">Name User</a></li>
             <li role="separator" class="divider"></li>
             <li><a href="#">Log out</a></li>
@@ -57,7 +58,7 @@
 
 
 <div class="thumbnail">
-  <img src="img/poster/logan.jpg" class="thumbpic">
+  <img src="{% static 'review_movie/img/poster/logan.jpg' %}" class="thumbpic">
   <div class="caption">
     <h3>Logan - Twenty Century Fox</h3>
       <p>"โลแกน" และแล้วก็มาถึงฉากสุดท้ายของตำนาน ฮีโร่ผู้ได้ชื่อว่าเป็นตัวเอกของแฟรนไชน์ภาพยนต์ X-men มานาน วันนี้ .....</p>
@@ -66,7 +67,7 @@
 </div>
 
 <div class="thumbnail">
-  <img src="img/poster/interstellar.jpg" class="thumbpic">
+  <img src="{% static 'review_movie/img/poster/interstellar.jpg' %}" class="thumbpic">
   <div class="caption">
     <h3>Interstellar - Wanner Bros.</h3>
       <p>ทะยานดาวกู้โลก หนังไซไฟที่ผู้เขียนชอบที่สุด หนังอะไรเนี่ย ชอบมากๆเลย อ๊ากกกกกกกก .....</p>
@@ -75,7 +76,7 @@
 </div>
 
 <div class="thumbnail">
-  <img src="img/poster/spiderman-homecomming.jpg" class="thumbpic">
+  <img src="{% static 'review_movie/img/poster/spiderman-homecomming.jpg' %}" class="thumbpic">
   <div class="caption">
     <h3>Spiderman Homecomming - Marvel Studio and Colombia Picture (Sony)</h3>
       <p>หลังจากได้ลิขสิทธิ์ร่วมสร้าง ทำสัญญากันเป็นที่เรียบร้อย "ไอ้แมงมุม" ของเรา ก็ได้.....</p>

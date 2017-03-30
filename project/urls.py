@@ -17,7 +17,7 @@ from django.conf.urls import include, url
 from django.contrib import admin
 
 urlpatterns = [
-    url(r'^$', include('review_movie.urls')),
+    #url(r'^$', include('review_movie.urls')),
     url(r'^admin/', admin.site.urls),
     url(r'^review_movie/', include('review_movie.urls'))
 ]
