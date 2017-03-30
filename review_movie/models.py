@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 # Create your models here.
 
@@ -14,6 +15,13 @@ class Movie(models.Model):
 
     def __str__(self):
         return self.name + ' - ' + self.film_production
+
+
+class UserProfile(models.Model):
+    user = models.ForeignKey(User, unique=True)
+    nickname = models.CharField(max_length=50)
+    profile_img = models.ImageField(
+        upload_to='review_movie/img/avatar', blank=True)
 
 
 class Review(models.Model):

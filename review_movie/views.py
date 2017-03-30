@@ -1,5 +1,5 @@
 from django.views import generic
-from .models import Movie
+from .models import Movie, UserProfile
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.views.generic import View
@@ -13,8 +13,12 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Movie.objects.all()
 
+
 class ProfileView(generic.ListView):
     template_name = 'review_movie/profile.html'
+
+    def get_queryset(self):
+        return self.UserProfile
 
 
 class AllMovieView(generic.ListView):
