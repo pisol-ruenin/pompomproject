@@ -4,11 +4,13 @@
         <meta charset="utf-8">
     </head>
     <body>
-    <center><h1>REGISTER</h1>
-    <form method="post" action="">
+    {% if error_message %}
+        <p>{{ error_message }}</p>
+    {% endif %}
+    <form method="post" action="" enctype="multipart/form-data">
         {% csrf_token %}
         {% include 'review_movie/form_template.html' %}
-        <button type="submit">Submit</button>
+        <button type="submit">Login</button>
     <form>
     </body>
 </html>

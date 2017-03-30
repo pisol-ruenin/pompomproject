@@ -10,9 +10,10 @@ class Movie(models.Model):
     movie_image = models.CharField(max_length=1000)
     genre = models.CharField(max_length=250)
     director = models.CharField(max_length=100)
+    film_production = models.CharField(max_length=100)
 
     def __str__(self):
-        return self.name
+        return self.name + ' - ' + self.film_production
 
 
 class Review(models.Model):
@@ -23,4 +24,4 @@ class Review(models.Model):
     review_date = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.movie) + ' - ' + self.reviewer + ' ' + str(self.review_date)
+        return str(self.movie.name) + ' - ' + self.reviewer + ' #' + str(self.review_date)
