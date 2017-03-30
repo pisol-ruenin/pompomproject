@@ -13,6 +13,9 @@ class IndexView(generic.ListView):
     def get_queryset(self):
         return Movie.objects.all()
 
+class ProfileView(generic.ListView):
+    template_name = 'review_movie/profile.html'
+
 
 class AllMovieView(generic.ListView):
     template_name = 'review_movie/all_movie.html'
