@@ -18,10 +18,13 @@ class Movie(models.Model):
 
 
 class UserProfile(models.Model):
-    user = models.ForeignKey(User, unique=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
     nickname = models.CharField(max_length=50)
     profile_img = models.ImageField(
         upload_to='review_movie/img/avatar', blank=True)
+
+    def __str__(self):
+        return self.nickname
 
 
 class Review(models.Model):

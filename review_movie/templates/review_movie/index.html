@@ -1,67 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title> - Free Popcorn - สังคมนักดูหนังแห่งสยามประเทศ!!! - </title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-{% load staticfiles %}
-<link rel="stylesheet" type="text/css" href="{% static 'review_movie/css/bootstrap.min.css' %}">
-<link rel="stylesheet" type="text/css" href="{% static 'review_movie/css/bootstrap.css' %}">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-<script type="text/javascript" src="{% static 'review_movie/js/bootstrap.js' %}"></script>
-<!-- <script type="text/javascript" src="js/bootstrap.js"></script> -->
-
-<!-- <script type="text/javascript">
-  $('.dropdown-toggle').dropdown()
-</script> -->
-</head>
-<body>
-<nav class="navbar-default navbar-fixed-top">
-  <div class="container-fluid">
-    <!-- Brand and toggle get grouped for better mobile display -->
-    <div class="navbar-header">
-      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="#">Free Popcorn</a>
-    </div>
-
-    <!-- Collect the nav links, forms, and other content for toggling -->
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-      <ul class="nav navbar-nav">
-        <li class="active"><a href="#">Home<span class="sr-only">(current)</span></a></li>
-        <li><a href="#">Review</a></li>
-
-      </ul>
-      <form class="navbar-form navbar-left">
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
-        </div>
-        <button type="submit" class="form-control">S</button>
-      </form>
-      <ul class="nav navbar-nav navbar-right">
-        {% if request.user.is_authenticated %}
-        <li class="dropdown">
-          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
-          <ul class="dropdown-menu">
-            <li><center><img class="profile" src="{% static 'review_movie/img/Profile1.png' %}"></center></li>
-            <li><a href="profile.html">{{ request.user.username }}</a></li>
-            <li>{{ request.user.groups }}</li>
-            <li role="separator" class="divider"></li>
-            <li><a href="{% url 'review_movie:logout' %}">Log out</a></li>
-          </ul>
-        </li>
-        {% else %}
-        <li><a href="{% url 'review_movie:register' %}">Sign up</a></li>
-        <li><a href="{% url 'review_movie:login' %}">Login</a></li>
-        {% endif %}
-      </ul>
-    </div><!-- /.navbar-collapse -->
-  </div><!-- /.container-fluid -->
-</nav>
-
+{% extends 'review_movie/base.html' %}
+{% load static from staticfiles %}
+{% block body %}
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
   <ol class="carousel-indicators">
@@ -102,43 +41,40 @@
 </div>
 <br>
 <div class="row">
-<div class="col-sm-6 col-md-4">
-<div class="thumbnail">
-  <div class="caption">
-    <img src="{% static 'review_movie/img/poster/logan.jpg' %}" class="thumbpic">
-    <h3>Logan - Twenty Century Fox</h3>
-      <p>"โลแกน" และแล้วก็มาถึงฉากสุดท้ายของตำนาน ฮีโร่ผู้ได้ชื่อว่าเป็นตัวเอกของแฟรนไชน์ภาพยนต์ X-men มานาน วันนี้ .....</p>
-      <p><a href="#" class="btn btn-primary" role="button">Read more</a>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <img src="{% static 'review_movie/img/poster/logan.jpg' %}" class="thumbpic">
+        <h3>Logan - Twenty Century Fox</h3>
+        <p>"โลแกน" และแล้วก็มาถึงฉากสุดท้ายของตำนาน ฮีโร่ผู้ได้ชื่อว่าเป็นตัวเอกของแฟรนไชน์ภาพยนต์ X-men มานาน วันนี้ .....</p>
+        <p><a href="#" class="btn btn-primary" role="button">Read more</a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <img src="{% static 'review_movie/img/poster/interstellar.jpg' %}" class="thumbpic">
+        <h3>Interstellar - Wanner Bros.</h3>
+        <p>ทะยานดาวกู้โลก หนังไซไฟที่ผู้เขียนชอบที่สุด หนังอะไรเนี่ย ชอบมากๆเลย อ๊ากกกกกกกก .....</p>
+        <p><a href="#" <button class="btn btn-primary">Read more</button></a></p>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <div class="caption">
+        <img src="{% static 'review_movie/img/poster/spiderman-homecomming.jpg' %}" class="thumbpic">
+        <h3>Spiderman Homecomming - Marvel Studio</h3>
+        <p>หลังจากได้ลิขสิทธิ์ร่วมสร้าง ทำสัญญากันเป็นที่เรียบร้อย "ไอ้แมงมุม" ของเรา ก็ได้.....</p>
+        <p><a href="#" class="btn btn-primary" role="button">Read more</a></p>
+      </div>
+    </div>
   </div>
 </div>
-</div>
-
-<div class="col-sm-6 col-md-4">
-<div class="thumbnail">
-  <div class="caption">
-  <img src="{% static 'review_movie/img/poster/interstellar.jpg' %}" class="thumbpic">
-    <h3>Interstellar - Wanner Bros.</h3>
-      <p>ทะยานดาวกู้โลก หนังไซไฟที่ผู้เขียนชอบที่สุด หนังอะไรเนี่ย ชอบมากๆเลย อ๊ากกกกกกกก .....</p>
-      <p><a href="#" <button class="btn btn-primary">Read more</button></a>
-  </div>
-</div>
-</div>
-
-<div class="col-sm-6 col-md-4">
-<div class="thumbnail">
-  <div class="caption">
-    <img src="{% static 'review_movie/img/poster/spiderman-homecomming.jpg' %}" class="thumbpic">
-    <h3>Spiderman Homecomming - Marvel Studio</h3>
-      <p>หลังจากได้ลิขสิทธิ์ร่วมสร้าง ทำสัญญากันเป็นที่เรียบร้อย "ไอ้แมงมุม" ของเรา ก็ได้.....</p>
-      <p><a href="#" class="btn btn-primary" role="button">Read more</a>
-  </div>
-</div>
-</div>
-</div>
-
-
 <footer class="footfu">
   <center>Copyright 2017 PomPom Project / computer science - CMU</center>
 </footer>
-</body>
-</html>
+{% endblock %}

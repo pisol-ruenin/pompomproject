@@ -11,6 +11,8 @@ urlpatterns = [
         {'template_name': 'review_movie/login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout,
         {'next_page': '/review_movie'}, name='logout'),
-    url(r'all_movie.html', views.AllMovieView.as_view(), name='all_movie'),
-    url(r'profile.html',views.ProfileView.as_view(),name='profile')
+    url(r'^all_movie/$', views.AllMovieView.as_view(), name='all_movie'),
+    url(r'^profile/$', views.ProfileView.as_view(), name='profile'),
+    # url(r'profile/(?P<pk>[0-9]+)/$',
+    # views.UpdateProfile.as_view(), name='update_profile')
 ]

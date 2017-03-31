@@ -2,7 +2,8 @@ from django.views import generic
 from .models import Movie, UserProfile
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
-from django.views.generic import View
+from django.contrib.auth.models import User
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import UserForm
 # Create your views here.
 
@@ -14,11 +15,16 @@ class IndexView(generic.ListView):
         return Movie.objects.all()
 
 
+class UpdateProfile(UpdateView):
+    model = UserProfile
+    fields = ['nickname', 'profile_img']
+
+
 class ProfileView(generic.ListView):
     template_name = 'review_movie/profile.html'
 
     def get_queryset(self):
-        return self.UserProfile
+        return UserProfile.objects.filter(pk=1)
 
 
 class AllMovieView(generic.ListView):
@@ -28,7 +34,7 @@ class AllMovieView(generic.ListView):
         return Movie.objects.all()
 
 
-class UserFormView(View):
+class UserFormView(generic.View):
     form_class = UserForm
     template_name = 'review_movie/register.html'
 
@@ -42,11 +48,14 @@ class UserFormView(View):
         form = self.form_class(request.POST)
 
         if form.is_valid():
+            user_profile = UserProfile()
             user = form.save(commit=False)
-            username = form.cleaned_data['username']
+            username = form.cl3eaned_data['username']
             password = form.cleaned_data['password']
             user.set_password(password)
             user.save()
+            user_profile.user = user
+            user_profile.save()
             user = authenticate(username=username, password=password)
             if user is not None:
                 if user.is_active:
