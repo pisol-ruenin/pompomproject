@@ -5,6 +5,7 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import UserForm
+from django.http import HttpRequest
 # Create your views here.
 
 
@@ -20,16 +21,26 @@ class UpdateProfile(UpdateView):
     fields = ['nickname', 'profile_img']
 
 
+class CreateReview(CreateView):
+    pass
+
+
+class UpdateReview(UpdateProfile):
+    pass
+
+
+class DeleteReview(DeleteView):
+    pass
+
+
 class ProfileView(generic.ListView):
     template_name = 'review_movie/profile.html'
-
-    def get_queryset(self):
-        return UserProfile.objects.filter(pk=1)
+    def get(self, request):
+        return render(request, self.template_name)
 
 
 class AllMovieView(generic.ListView):
     template_name = 'review_movie/all_movie.html'
-
     def get_queryset(self):
         return Movie.objects.all()
 
@@ -50,7 +61,7 @@ class UserFormView(generic.View):
         if form.is_valid():
             user_profile = UserProfile()
             user = form.save(commit=False)
-            username = form.cl3eaned_data['username']
+            username = form.cleaned_data['username']
             password = form.cleaned_data['password']
             user.set_password(password)
             user.save()

@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-    </head>
-    <body>
-    <h1>PROFILE</h1>
-    <div>Name : {{ request.user.username }}</div>
-    <div>E-mail : {{ request.user.email }}</div>
-    <div>{{ object_list }}</div>
-    </body>
-</html>
+{% extends 'review_movie/base.html'%}
+{% block title %}My Profile{% endblock %}
+{% block body %}
+<h1>PROFILE</h1>
+<div>Name : {{ request.user.username }}</div>
+<div>E-mail : {{ request.user.email }}</div>
+<div>Nickname : {{ request.user.userprofile.nickname }}</div>
+<div>Job : {{ request.user.userprofile.job }}</div>
+{% endblock %}

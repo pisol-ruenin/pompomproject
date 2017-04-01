@@ -18,13 +18,14 @@ class Movie(models.Model):
 
 
 class UserProfile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, primary_key=True)
     nickname = models.CharField(max_length=50)
-    profile_img = models.ImageField(
-        upload_to='review_movie/img/avatar', blank=True)
+    job = models.CharField(max_length=50)
+    profile_img = models.CharField(max_length=1000)
 
     def __str__(self):
-        return self.nickname
+        return str(self.user)
 
 
 class Review(models.Model):
