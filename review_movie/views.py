@@ -32,8 +32,12 @@ class UpdateReview(UpdateProfile):
 class DeleteReview(DeleteView):
     pass
 
+class MovieView(generic.View):
+    template_name = 'review_movie/movie.html'
+    def get(self, request):
+        return render(request, self.template_name)
 
-class ProfileView(generic.ListView):
+class ProfileView(generic.View):
     template_name = 'review_movie/profile.html'
     def get(self, request):
         return render(request, self.template_name)

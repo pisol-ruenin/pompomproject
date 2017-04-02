@@ -33,6 +33,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'widget_tweaks',
     'review_movie.apps.ReviewMovieConfig',
     'django.contrib.admin',
     'django.contrib.auth',

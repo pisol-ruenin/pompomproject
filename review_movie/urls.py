@@ -13,6 +13,7 @@ urlpatterns = [
         {'next_page': '/review_movie'}, name='logout'),
     url(r'^all_movie/$', views.AllMovieView.as_view(), name='all_movie'),
     url(r'^profile/$', views.ProfileView.as_view(), name='profile'),
+    url(r'^movie/$',views.MovieView.as_view(),name='movie')
     # url(r'profile/(?P<pk>[0-9]+)/$',
     # views.UpdateProfile.as_view(), name='update_profile')
 ]

@@ -1,9 +1,22 @@
+{% load staticfiles %}
+{% load widget_tweaks %}
+<link rel="stylesheet" type="text/css" href="{% static 'review_movie/css/bootstrap.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'review_movie/css/bootstrap.css' %}">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+<script type="text/javascript" src="{% static 'review_movie/js/bootstrap.js' %}"></script>
+<div class="form-group">
 {% for field in form %}
     <div>
         <div>
             {{ field.errors }}
         </div>
-        <label>{{ field.label_tag }}</label>
-        <div>{{ field }}</div>
+        
+        <p>
+        <div style="margin-bottom: 25px" class="input-group">
+        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+        {{ field.label_tag }} {{ field|add_class:"form-control" }}</div>
+      </p>
     </div>
+
 {% endfor %}
+</div>

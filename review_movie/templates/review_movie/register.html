@@ -1,14 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8">
-    </head>
-    <body>
+{% extends 'review_movie/base.html' %}
+{% load static from staticfiles %}
+{% block body %}
     <center><h1>REGISTER</h1>
     <form method="post" action="">
         {% csrf_token %}
         {% include 'review_movie/form_template.html' %}
-        <button type="submit">Submit</button>
+        <button class="btn btn-info" type="submit">Submit</button>
     <form>
     </body>
 </html>
+{% endblock %}
