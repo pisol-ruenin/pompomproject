@@ -12,6 +12,7 @@ class Movie(models.Model):
     genre = models.CharField(max_length=250)
     director = models.CharField(max_length=100)
     film_production = models.CharField(max_length=100)
+    movie_poster = models.ImageField()
 
     def __str__(self):
         return self.name + ' - ' + self.film_production

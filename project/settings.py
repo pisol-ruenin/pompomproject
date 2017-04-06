@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/1.10/ref/settings/
 
 import os
 
+LOGIN_URL = 'review_movie:login'
 LOGIN_REDIRECT_URL = 'review_movie:index'
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)

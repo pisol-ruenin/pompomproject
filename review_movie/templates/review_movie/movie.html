@@ -2,22 +2,11 @@
 {% load static from staticfiles %}
 {% block body %}
 <style type="text/css">
-body{background-image: url('{% static 'review_movie/img/poster/Rogue_One.jpg' %}') ;}
-img.bg {
-  /* Set rules to fill background */
-  min-height: 100%;
-  min-width: 1024px;
-
-  /* Set up proportionate scaling */
-  width: 100%;
-  height: auto;
-
-  /* Set up positioning */
-  position: fixed;
-  top: 0;
-  left: 0;
-}
-
+body{background: url('{% static 'review_movie/img/poster/Rogue_One.jpg' %}');
+background-size: 130%;
+background-repeat:repeat;
+/*background-position:center;*/
+background-attachment:fixed;}
 img{max-width: 100%;}
 .preview {
   display: -webkit-box;
@@ -66,10 +55,10 @@ img{max-width: 100%;}
 .card {
   max-width: 100%;
   margin-top: 50px;
-  background: #eee;
+  background: rgba(238, 238, 238, 0.85);;
   padding: 3em;
-  line-height: 1.5em;
-  opacity: 0.9;}
+  line-height: 1.5em;}
+  /*opacity: 0.9;}*/
 
 @media screen and (min-width: 997px) {
   .wrapper {
@@ -175,7 +164,25 @@ img{max-width: 100%;}
     opacity: 1;
     -webkit-transform: scale(1);
             transform: scale(1); } }
-
+.rating{font-size: 25px;}
+.rating > span:hover:before {
+  color: yellow;
+  content: "\2605";
+  position: absolute;
+  }
+  .liee{font-size: 18px;
+    color: #efefef;
+  background-color:#343233;
+  padding: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  border-radius: 8px;}
+  .liee:hover{background-color: #4f4f4f;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
+  .profile{float:left;
+    width: 50px;
+    height: 50px;
+    margin-right: 10px;}
 /*# sourceMappingURL=style.css.map */</style>
 
 
@@ -190,22 +197,31 @@ img{max-width: 100%;}
 					</div>
 					<div class="details col-md-6">
 						<h3 class="product-title">Rogue One: A Star Wars Story</h3>
-						<div class="rating">
-							<div class="stars">
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star checked"></span>
-								<span class="fa fa-star"></span>
-								<span class="fa fa-star"></span>
-							</div>
-							<span class="review-no">41 reviews</span>
-						</div>
-						<p class="product-description"><b>Rogue One: A Star Wars Story,</b> or simply Rogue One, is a 2016 American epic space opera film directed by Gareth Edwards and written by Chris Weitz and Tony Gilroy based on a story by John Knoll and Gary Whitta. It was produced by Lucasfilm and distributed by Walt Disney Studios Motion Pictures. It is the first installment of the Star Wars Anthology series, set immediately before the events of the original Star Wars film. The cast includes Felicity Jones, Diego Luna, Riz Ahmed, Ben Mendelsohn, Donnie Yen, Mads Mikkelsen, Alan Tudyk, Jiang Wen and Forest Whitaker. Rogue One follows a group of rebels on a mission to steal the plans for the Death Star, the Galactic Empire's superweapon.</p>
-
+            <div class="rating">
+              <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+            </div>
+						<span class="review-no">41 reviews</span><br>
+            <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" max-width="100%" src="https://www.youtube.com/embed/sC9abcLLQpI" frameborder="0" allowfullscreen></iframe></div>
+            <br>
+            <p><b>Directed by</b> Gareth Edwards</p>
+            <p><b>Written by</b> Chris Weitz and Tony Gilroy</p>
+            <p><b>Based on Characters by</b> George Lucas</p>
+            <p class="product-description"><b>Rogue One: A Star Wars Story,</b> or simply Rogue One, is a 2016 American epic space opera film based on a story by John Knoll and Gary Whitta. </p>
+            <p>Rogue One follows a group of rebels on a mission to steal the plans for the Death Star, the Galactic Empire's superweapon.</p>
 					</div>
 				</div>
+        <br>
+        <div><h3>รีวิวของภาพยนต์เรื่องนี้</h3>
+          <ul style="list-style: none;">
+            <a href="#"><li class="liee"><img class="profile"src="{% static 'review_movie/img/notuse2.png' %}">"ตำนานสตาร์วอร์" โร๊ควัน ยันเช้า<br> โดย ดอสดอส</li></a>
+            <a href="#"><li class="liee"><img class="profile"src="{% static 'review_movie/img/notuse.png' %}">Rogue One เดนตาย ไปเอาแผนที่<br> โดย กั้งกั้ง</li></a>
+            <a href="#"><li class="liee"><img class="profile"src="{% static 'review_movie/img/notuse3.png' %}">ปฐมบท ของปฐมบท "โร๊ค ... โร๊ควัน"<br> โดย ก้องก้อง</li></a>
+          </ul>
+        </div>
 			</div>
 		</div>
 	</div>
-
+  <footer class="footfu">
+    <center>Copyright 2017 PomPom Project / computer science - CMU</center>
+  </footer>
 {% endblock %}

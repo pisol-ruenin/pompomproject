@@ -1,5 +1,5 @@
 from django.views import generic
-from .models import Movie, UserProfile
+from .models import Movie, UserProfile, Review
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
@@ -12,39 +12,51 @@ from django.http import HttpRequest
 class IndexView(generic.ListView):
     template_name = 'review_movie/index.html'
 
+    def include_login_form(request):
+        from django.contrib.auth.forms import AuthenticationForm
+        form = AuthenticationForm()
+        return {'login_form': form}
+
     def get_queryset(self):
         return Movie.objects.all()
 
 
 class UpdateProfile(UpdateView):
     model = UserProfile
-    fields = ['nickname', 'profile_img']
+    fields = ['nickname', 'profile_img', 'job']
 
 
 class CreateReview(CreateView):
-    pass
+    model = Review
+    fields = ['review', 'score']
 
 
 class UpdateReview(UpdateProfile):
-    pass
+    model = Review
+    fields = ['review', 'score']
 
 
 class DeleteReview(DeleteView):
     pass
 
+
 class MovieView(generic.View):
     template_name = 'review_movie/movie.html'
+
     def get(self, request):
         return render(request, self.template_name)
 
+
 class ProfileView(generic.View):
     template_name = 'review_movie/profile.html'
+
     def get(self, request):
         return render(request, self.template_name)
 
 
 class AllMovieView(generic.ListView):
     template_name = 'review_movie/all_movie.html'
+
     def get_queryset(self):
         return Movie.objects.all()
 
