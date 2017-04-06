@@ -5,17 +5,12 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import UserForm
-from django.http import HttpRequest
+from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 # Create your views here.
 
 
 class IndexView(generic.ListView):
     template_name = 'review_movie/index.html'
-
-    def include_login_form(request):
-        from django.contrib.auth.forms import AuthenticationForm
-        form = AuthenticationForm()
-        return {'login_form': form}
 
     def get_queryset(self):
         return Movie.objects.all()
@@ -31,7 +26,7 @@ class CreateReview(CreateView):
     fields = ['review', 'score']
 
 
-class UpdateReview(UpdateProfile):
+class UpdateReview(UpdateView):
     model = Review
     fields = ['review', 'score']
 
@@ -40,11 +35,16 @@ class DeleteReview(DeleteView):
     pass
 
 
-class MovieView(generic.View):
-    template_name = 'review_movie/movie.html'
+class AllMovieView(generic.ListView):
+    model = Movie
+    context_object_name = "movie_list"
+    template_name = 'review_movie/all_movie.html'
+    paginate_by = 9
 
-    def get(self, request):
-        return render(request, self.template_name)
+
+class MovieView(generic.DetailView):
+    model = Movie
+    template_name = 'review_movie/movie.html'
 
 
 class ProfileView(generic.View):
@@ -52,13 +52,6 @@ class ProfileView(generic.View):
 
     def get(self, request):
         return render(request, self.template_name)
-
-
-class AllMovieView(generic.ListView):
-    template_name = 'review_movie/all_movie.html'
-
-    def get_queryset(self):
-        return Movie.objects.all()
 
 
 class UserFormView(generic.View):

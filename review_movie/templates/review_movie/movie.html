@@ -2,7 +2,7 @@
 {% load static from staticfiles %}
 {% block body %}
 <style type="text/css">
-body{background: url('{% static 'review_movie/img/poster/Rogue_One.jpg' %}');
+body{background: url('{{ movie.movie_poster.url }}');
 background-size: 130%;
 background-repeat:repeat;
 /*background-position:center;*/
@@ -192,22 +192,20 @@ img{max-width: 100%;}
 				<div class="wrapper row">
 					<div class="preview col-md-6">
 
-						  <div class="tab-pane active" id="pic-1"><img src="{% static 'review_movie/img/poster/Rogue_One.jpg' %}" /></div>
+						  <div class="tab-pane active" id="pic-1"><img src="{{ movie.movie_poster.url }}" /></div>
 
 					</div>
 					<div class="details col-md-6">
-						<h3 class="product-title">Rogue One: A Star Wars Story</h3>
-            <div class="rating">
-              <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
-            </div>
+						<h3 class="product-title">{{ movie.name }}</h3>
 						<span class="review-no">41 reviews</span><br>
-            <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" max-width="100%" src="https://www.youtube.com/embed/sC9abcLLQpI" frameborder="0" allowfullscreen></iframe></div>
+            <div class="embed-responsive embed-responsive-16by9"><iframe class="embed-responsive-item" max-width="100%" src="{{ movie.trailer_video }}" frameborder="0" allowfullscreen></iframe></div>
             <br>
-            <p><b>Directed by</b> Gareth Edwards</p>
-            <p><b>Written by</b> Chris Weitz and Tony Gilroy</p>
-            <p><b>Based on Characters by</b> George Lucas</p>
-            <p class="product-description"><b>Rogue One: A Star Wars Story,</b> or simply Rogue One, is a 2016 American epic space opera film based on a story by John Knoll and Gary Whitta. </p>
-            <p>Rogue One follows a group of rebels on a mission to steal the plans for the Death Star, the Galactic Empire's superweapon.</p>
+            <p><b>Product by</b> {{ movie.film_production }}</p>
+            <p><b>Directed by</b> {{ movie.director }}</p>
+            <p><b>Written by</b> {{ movie.writer }}</p>
+            <p><b>Released date</b> {{ movie.released_date }}</p>
+            <p class="product-description">
+            {{ movie.synopsis }}
 					</div>
 				</div>
         <br>

@@ -8,11 +8,13 @@ class Movie(models.Model):
     name = models.CharField(max_length=100)
     synopsis = models.TextField(max_length=1000)
     released_date = models.DateField()
-    movie_image = models.CharField(max_length=1000)
     genre = models.CharField(max_length=250)
     director = models.CharField(max_length=100)
+    writer = models.CharField(max_length=200)
     film_production = models.CharField(max_length=100)
     movie_poster = models.ImageField()
+    trailer_video = models.CharField(max_length=1000)
+    score = models.FloatField()
 
     def __str__(self):
         return self.name + ' - ' + self.film_production
