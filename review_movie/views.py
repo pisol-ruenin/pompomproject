@@ -12,6 +12,11 @@ from django.http import HttpRequest
 class IndexView(generic.ListView):
     template_name = 'review_movie/index.html'
 
+    def include_login_form(request):
+        from django.contrib.auth.forms import AuthenticationForm
+        form = AuthenticationForm()
+        return {'login_form': form}
+
     def get_queryset(self):
         return Movie.objects.all()
 
@@ -34,10 +39,13 @@ class UpdateReview(UpdateProfile):
 class DeleteReview(DeleteView):
     pass
 
+
 class MovieView(generic.View):
     template_name = 'review_movie/movie.html'
+
     def get(self, request):
         return render(request, self.template_name)
+
 
 class ProfileView(generic.View):
     template_name = 'review_movie/profile.html'
