@@ -1,6 +1,197 @@
 {% extends 'review_movie/base.html' %}
 {% load static from staticfiles %}
-{% block body %}
+{% block body %}    
+
+<style type="text/css">    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+    .row.content {max-width: 100%;
+        float: right;
+        height: auto;}
+    .col-sm-3{background-color: #0c2244;
+        border-radius: 10px;
+        padding: 0px;}
+    
+    /* Set gray background color and 100% height */
+    .sidenav {
+      background-color: #f1f1f1;
+      height: 100%;
+    }
+
+    
+    /* Set black background color, white text and some padding */
+    footer {
+      background-color: #555;
+      color: white;
+      padding: 15px;
+    }
+    
+    /* On small screens, set height to 'auto' for sidenav and grid */
+    @media screen and (max-width: 767px) {
+      .sidenav {
+        height: auto;
+        padding: 15px;
+      }
+      .row.content {height: auto;} 
+    }
+
+    img{width: 100%;}
+    
+    .thumbnail{
+        border: 2px solid black;        height: auto;
+        }
+    .liee{max-width: 100%;
+        font-size: 18px;
+        color: #efefef;
+        padding: 15px;
+        }
+  .liee:hover{background-color: rgba(255, 255, 255, 0.2);
+    border-left: 5px solid white;
+
+}
+    .lieetop:hover{border-top-left-radius: 10px;
+    border-top-right-radius: 10px; }
+    .lieebottom:hover{border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px; }
+
+  .color-container{background-color: #fff;
+    }
+
+  .sidebar1 {
+    background: #F17153;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#F17153, #F58D63, #f1ab53);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#F17153, #F58D63, #f1ab53);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#F17153, #F58D63, #f1ab53);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#F17153, #F58D63, #f1ab53);
+    /* Standard syntax */
+    padding: 0px;
+    min-height: 100%;
+}
+
+</style>
+<body>
 
 
+<div class="container-fluid color-container"><br>
+<div class="col-sm-9">
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="{%static 'review_movie/img/poster/logan 2.jpg'%}" alt="...">
+      <div class="caption">
+        <h3>Logan</h3>
+        <p>Rating: 10/10</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="{%static 'review_movie/img/poster/punch.jpg'%}" alt="...">
+      <div class="caption">
+        <h3>Punch</h3>
+        <p>Rating: 6/10</p>
+       
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="{%static 'review_movie/img/poster/looper.jpg'%}" alt="...">
+      <div class="caption">
+        <h3>Looper</h3>
+        <p>Rating: 7/10</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="{%static 'review_movie/img/poster/skyfall.jpg'%}" alt="...">
+      <div class="caption">
+        <h3>Skyfall</h3>
+        <p>Rating: 8/10</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="{%static 'review_movie/img/poster/martian.jpg'%}" alt="...">
+      <div class="caption">
+        <h3>Martian</h3>
+        <p>Rating: 5/10</p>
+       
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="{%static 'review_movie/img/poster/the_broken.jpg'%}" alt="...">
+      <div class="caption">
+        <h3>The Broken</h3>
+        <p>Rating: 9/10</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="{%static 'review_movie/img/poster/inception.jpg'%}" alt="...">
+      <div class="caption">
+        <h3>Inception</h3>
+        <p>Rating: 8/10</p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="{%static 'review_movie/img/poster/fight_club.jpg'%}" alt="...">
+      <div class="caption">
+        <h3>Fight Club</h3>
+        <p>Rating: 5/10 </p>
+       
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6 col-md-4">
+    <div class="thumbnail">
+      <img src="{%static 'review_movie/img/poster/hard_candy.jpg'%}" alt="...">
+      <div class="caption">
+        <h3>Hard Candy</h3>
+        <p>Rating: 6/10</p>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+  
+
+    <div class="col-sm-3">
+
+        <div class="liee lieetop">Action</div>
+        <div class="liee">Adventure </div>
+        <div class="liee">Drama </div>
+        <div class="liee">Sci-Fi </div>
+        <div class="liee">Family </div>
+        <div class="liee">Thriller </div>
+        <div class="liee">Crime </div>
+        <div class="liee">Animation</div>
+        <div class="liee">Comedy </div>
+        <div class="liee">Fantasy </div>
+        <div class="liee lieebottom">Romance </div>
+
+
+    </div>
+
+</div>
+
+  <footer class="footfu">
+    <center>Copyright 2017 PomPom Project / computer science - CMU</center>
+  </footer>
+</body>
 {% endblock %}
