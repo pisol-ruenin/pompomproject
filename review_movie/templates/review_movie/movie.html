@@ -2,12 +2,14 @@
 {% load static from staticfiles %}
 {% block body %}
 <style type="text/css">
-body{background: url('{{ movie.movie_poster.url }}');
-background-size: 130%;
+body{background: url("{% static 'review_movie/img/bg_movie_info.png' %}") ;
+  /*url('{{ movie.movie_poster.url }}');*/
+background-size: 100%;
 background-repeat:repeat;
-/*background-position:center;*/
+
 background-attachment:fixed;}
-img{max-width: 100%;}
+/*background-position:center;*/
+img{width: 100%;}
 .preview {
   display: -webkit-box;
   display: -webkit-flex;
@@ -179,7 +181,7 @@ img{max-width: 100%;}
   border-radius: 8px;}
   .liee:hover{background-color: #4f4f4f;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
-  .profile{float:left;
+  .profile_small{float: left;
     width: 50px;
     height: 50px;
     margin-right: 10px;}
@@ -211,14 +213,16 @@ img{max-width: 100%;}
         <br>
         <div><h3>รีวิวของภาพยนต์เรื่องนี้</h3>
           <ul style="list-style: none;">
-            <a href="#"><li class="liee"><img class="profile"src="{% static 'review_movie/img/notuse2.png' %}">"ตำนานสตาร์วอร์" โร๊ควัน ยันเช้า<br> โดย ดอสดอส</li></a>
-            <a href="#"><li class="liee"><img class="profile"src="{% static 'review_movie/img/notuse.png' %}">Rogue One เดนตาย ไปเอาแผนที่<br> โดย กั้งกั้ง</li></a>
-            <a href="#"><li class="liee"><img class="profile"src="{% static 'review_movie/img/notuse3.png' %}">ปฐมบท ของปฐมบท "โร๊ค ... โร๊ควัน"<br> โดย ก้องก้อง</li></a>
+            <a href="#"><li class="liee"><img class="profile profile_small"src="{% static 'review_movie/img/notuse2.png' %}">"ตำนานสตาร์วอร์" โร๊ควัน ยันเช้า<br> โดย ดอสดอส</li></a>
+            <a href="#"><li class="liee"><img class="profile profile_small"src="{% static 'review_movie/img/notuse.png' %}">Rogue One เดนตาย ไปเอาแผนที่<br> โดย กั้งกั้ง</li></a>
+            <a href="#"><li class="liee"><img class="profile profile_small"src="{% static 'review_movie/img/notuse3.png' %}">ปฐมบท ของปฐมบท "โร๊ค ... โร๊ควัน"<br> โดย ก้องก้อง</li></a>
           </ul>
         </div>
 			</div>
 		</div>
 	</div>
+  <br>
+  <br>
   <footer class="footfu">
     <center>Copyright 2017 PomPom Project / computer science - CMU</center>
   </footer>

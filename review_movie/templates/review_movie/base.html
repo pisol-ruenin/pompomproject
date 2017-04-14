@@ -6,8 +6,17 @@
     {% load staticfiles %}
     <link rel="stylesheet" type="text/css" href="{% static 'review_movie/css/bootstrap.min.css' %}">
     <link rel="stylesheet" type="text/css" href="{% static 'review_movie/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script type="text/javascript" src="{% static 'review_movie/js/bootstrap.js' %}"></script>
+    <style type="text/css">
+    .form-search{color: #fff !important;
+      background-color: #374c61!important ;}
+      .form-search:focus{background-color:#3f576f !important;}
+      .drop-text{color: #fff !important;}
+      .profile{margin-top: 10px;
+      margin-bottom: 10px;}
+      </style>
 </head>
 <body>
     <nav class="navbar-default navbar-fixed-top">
@@ -32,9 +41,10 @@
     </ul>
     <form class="navbar-form navbar-left">
         <div class="form-group">
-          <input type="text" class="form-control" placeholder="Search">
+          <input type="text" class="form-control form-search" placeholder="Search">
+          <button type="submit" class="form-control form-search"><i class="fa fa-search"></i></button>
       </div>
-      <button type="submit" class="form-control">S</button>
+
   </form>
   <ul class="nav navbar-nav navbar-right">
     {% if request.user.is_authenticated %}
@@ -42,10 +52,10 @@
       <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Profile <span class="caret"></span></a>
       <ul class="dropdown-menu">
         <li><center><img class="profile" src="{% static 'review_movie/img/defult_profile.png' %}"></center></li>
-        <li><a href="{% url 'review_movie:profile' %}">{{ request.user.username }}</a></li>
-        <li>{{ request.user.groups }}</li>
+        <li><a class="drop-text" href="{% url 'review_movie:profile' %}">{{ request.user.username }}</a></li>
+        <li><a class="drop-text" href="#">{{ request.user.groups }}</a></li>
         <li role="separator" class="divider"></li>
-        <li><a href="{% url 'review_movie:logout' %}">Log out</a></li>
+        <li><a class="drop-text" href="{% url 'review_movie:logout' %}">Log out</a></li>
     </ul>
 </li>
 {% elif not request.user.is_authenticated and not "/review_movie/login" in request.get_full_path %}
@@ -72,16 +82,11 @@
                                        </label>
                                     </div> -->
                                     <div class="form-group">
-                                       <button type="submit" class="btn btn-success btn-block">Sign in</button>
+                                       <button type="submit" class="btn btn-primary btn-block">Sign in</button>
                                     </div>
                                  </form>
                               </div>
                            </div>
-                        </li>
-                        <li class="divider"></li>
-                        <li>
-                           <input class="btn btn-primary btn-block" type="button" id="sign-in-google" value="Sign In with Google">
-                           <input class="btn btn-primary btn-block" type="button" id="sign-in-twitter" value="Sign In with Twitter">
                         </li>
                      </ul>
                   </li>

@@ -1,7 +1,7 @@
 {% extends 'review_movie/base.html' %}
 {% load static from staticfiles %}
 {% load mathfilters %}
-{% block body %}    
+{% block body %}
 
 <style type="text/css">    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
   .row.content {
@@ -9,10 +9,11 @@
     float: right;
     height: auto;
   }
+
   .col-sm-3{
-    background-color: #0c2244;
+    background-color: #5a657d;
     border-radius: 10px;
-    padding: 0px;
+    padding: 5px;
   }
 
   /* Set gray background color and 100% height */
@@ -35,34 +36,17 @@
       height: auto;
       padding: 15px;
     }
-    .row.content {height: auto;} 
+    .row.content {height: auto;}
   }
 
   img{width: 100%;}
 
   .thumbnail{
-    border: 2px solid black;        height: auto;
+    background-color: #5a657d;
+    height: auto;
   }
-  .liee{max-width: 100%;
-    font-size: 18px;
-    color: #efefef;
-    padding: 15px;
-  }
-  .liee:hover{background-color: rgba(255, 255, 255, 0.2);
-    border-left: 5px solid white;
-
-  }
-  .lieetop:hover{
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-  }
-  .lieebottom:hover{
-    border-bottom-left-radius: 10px;
-    border-bottom-right-radius: 10px;
-  }
-
   .color-container{
-    background-color: #fff;
+    background-color: #4a5469;
   }
 
   .sidebar1 {
@@ -79,7 +63,20 @@
     padding: 0px;
     min-height: 100%;
   }
-
+.prelist{padding:  10px 0px 10px 20px;
+font-size: 1.5em;}
+ul.a {list-style-type: circle;
+background-color: #4a5469;
+margin:  10px;
+padding-top: 5px;
+padding-bottom: 5px;}
+ul li.a{
+    color: #8ae28b;
+    margin-top: 5px;
+    font-size: 1.1em;
+}
+.thumbnail:hover{background-color: #6e7b98;}
+span{color: #fff;}
 </style>
 <body>
 
@@ -124,28 +121,30 @@
       <h1>Not Found Movie!!!</h1>
       {% endif %}
     </div>
-  </div>
 
 
   <div class="col-sm-3">
-
-    <div class="liee lieetop">Action</div>
-    <div class="liee">Adventure </div>
-    <div class="liee">Drama </div>
-    <div class="liee">Sci-Fi </div>
-    <div class="liee">Family </div>
-    <div class="liee">Thriller </div>
-    <div class="liee">Crime </div>
-    <div class="liee">Animation</div>
-    <div class="liee">Comedy </div>
-    <div class="liee">Fantasy </div>
-    <div class="liee lieebottom">Romance </div>
-
+    <div class="prelist">Category</div>
+    <div>
+      <ul class="a">
+        <li class="a"><span>Action</li>
+        <li class="a"><span>Adventure </li>
+        <li class="a"><span>Drama </li>
+        <li class="a"><span>Sci-Fi </li>
+        <li class="a"><span>Family </li>
+        <li class="a"><span>Thriller </li>
+        <li class="a"><span>Crime </li>
+        <li class="a"><span>Animation </li>
+        <li class="a"><span>Comedy </li>
+        <li class="a"><span>Fantasy </li>
+        <li class="a"><span>Romance </li>
+      </ul>
+    </div>
 
   </div>
 
 </div>
-
+<br><br>
 <footer class="footfu">
   <center>Copyright 2017 PomPom Project / computer science - CMU</center>
 </footer>

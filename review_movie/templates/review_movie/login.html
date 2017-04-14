@@ -1,15 +1,26 @@
 {% extends 'review_movie/base.html' %}
 {% load static from staticfiles %}
 {% block body %}
+<style type="text/css">
+body{background-color: #a2b3d6 !important; }
+.btn-info{background-color: #2232ff !important;}
+.fail-login-div{width: 80%;}
+@media (min-width:372px) {
+  .fail-login-div{width: 300px;}
+}
+</style>
     {% if error_message %}
         <p>{{ error_message }}</p>
     {% endif %}
+
     <center><form method="post" action="{% url 'review_movie:login' %}" enctype="multipart/form-data">
         {% csrf_token %}
         {% if form.errors %}
             <p class="alert alert-danger">Your Username or Password were not entered correctly. Please try again.</p>
         {% endif %}
+        <div class="fail-login-div">
         {% include 'review_movie/form_template.html' %}<br>
         <button class="btn btn-info" type="submit">Login</button>
-    </form></center>
+
+    </form></div></center>
 {% endblock %}
