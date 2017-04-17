@@ -11,9 +11,11 @@ from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 
 class IndexView(generic.ListView):
     template_name = 'review_movie/index.html'
+    context_object_name = "movie_list"
 
     def get_queryset(self):
-        return Movie.objects.all()
+        movie = Movie.objects.all()[::-1]
+        return movie[:3] if len(movie) >= 3 else movie
 
 
 class UpdateProfile(UpdateView):
@@ -36,15 +38,23 @@ class DeleteReview(DeleteView):
 
 
 class AllMovieView(generic.ListView):
-    model = Movie
     context_object_name = "movie_list"
     template_name = 'review_movie/all_movie.html'
     paginate_by = 9
+
+    def get_queryset(self):
+        movie = Movie.objects.all()[::-1]
+        return movie
 
 
 class MovieView(generic.DetailView):
     model = Movie
     template_name = 'review_movie/movie.html'
+
+    def get_context_data(self, **kwargs):
+        context = super(MovieView, self).get_context_data(**kwargs)
+        context['reviews'] = Review.objects.filter(movie=self.get_object())
+        return context
 
 
 class ProfileView(generic.View):

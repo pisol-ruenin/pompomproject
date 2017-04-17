@@ -14,7 +14,6 @@ class Movie(models.Model):
     film_production = models.CharField(max_length=100)
     movie_poster = models.ImageField()
     trailer_video = models.CharField(max_length=1000)
-    score = models.FloatField()
 
     def __str__(self):
         return self.name + ' - ' + self.film_production
@@ -25,7 +24,7 @@ class UserProfile(models.Model):
         User, on_delete=models.CASCADE, primary_key=True)
     nickname = models.CharField(max_length=50)
     job = models.CharField(max_length=50)
-    profile_img = models.CharField(max_length=1000)
+    profile_img = models.ImageField()
 
     def __str__(self):
         return str(self.user)
@@ -33,10 +32,11 @@ class UserProfile(models.Model):
 
 class Review(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    topic = models.CharField(max_length=50)
     review = models.TextField(max_length=1000)
     score = models.IntegerField()
-    reviewer = models.CharField(max_length=100)
+    reviewer = models.ForeignKey(User, null=True)
     review_date = models.DateField(auto_now_add=True)
 
     def __str__(self):
-        return str(self.movie.name) + ' - ' + self.reviewer + ' #' + str(self.review_date)
+        return str(self.movie.name) + ' - ' + str(self.reviewer) + ' #' + str(self.review_date)

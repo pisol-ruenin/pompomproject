@@ -1,6 +1,7 @@
 {% extends 'review_movie/base.html' %}
 {% load static from staticfiles %}
 {% load mathfilters %}
+{% block nav_allmovie %}active{% endblock %}
 {% block body %}
 
 <style type="text/css">    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
@@ -105,13 +106,13 @@ span{color: #fff;}
       <center>
         <span>
           {% if page_obj.has_previous %}
-          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+          <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
           {% endif %}
           <span>
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
           </span>
           {% if page_obj.has_next %}
-          <a href="?page={{ page_obj.next_page_number }}">next</a>
+          <a href="?page={{ page_obj.next_page_number }}">Next</a>
           {% endif %}
         </span>
       <center>
