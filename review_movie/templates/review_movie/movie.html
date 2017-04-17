@@ -2,14 +2,15 @@
 {% load static from staticfiles %}
 {% block body %}
 <style type="text/css">
-body{background: url("{% static 'review_movie/img/bg_movie_info.png' %}") ;
-  /*url('{{ movie.movie_poster.url }}');*/
+body{background: url('{{ movie.movie_poster.url }}');
 background-size: 100%;
 background-repeat:repeat;
 
-background-attachment:fixed;}
+background-attachment:fixed;
+color: #efefef;}
 /*background-position:center;*/
 img{width: 100%;}
+
 .preview {
   display: -webkit-box;
   display: -webkit-flex;
@@ -57,7 +58,7 @@ img{width: 100%;}
 .card {
   max-width: 100%;
   margin-top: 50px;
-  background: rgba(238, 238, 238, 0.85);;
+  background: rgba(0, 0, 0, 0.85);
   padding: 3em;
   line-height: 1.5em;}
   /*opacity: 0.9;}*/
@@ -184,7 +185,9 @@ img{width: 100%;}
   .profile_small{float: left;
     width: 50px;
     height: 50px;
-    margin-right: 10px;}
+    margin-right: 10px;
+    margin-top: 0px;
+    margin-bottom: 0px;}
 /*# sourceMappingURL=style.css.map */</style>
 
 
