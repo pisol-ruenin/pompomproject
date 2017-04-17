@@ -2,15 +2,29 @@
 {% load static from staticfiles %}
 {% block body %}
 <style type="text/css">
-body{background: url('{{ movie.movie_poster.url }}');
+body{
+/*background: url('{{ movie.movie_poster.url }}');
 background-size: 100%;
 background-repeat:repeat;
-
-background-attachment:fixed;
+background-attachment:fixed;*/
 color: #efefef;}
 /*background-position:center;*/
 img{width: 100%;}
-
+.page-bg {
+  background: url('{{ movie.movie_poster.url }}');
+  -webkit-filter: blur(3px);
+  -moz-filter: blur(3px);
+  -o-filter: blur(3px);
+  -ms-filter: blur(3px);
+  filter: blur(3px);
+  position: fixed;
+  background-size: 100%;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
 .preview {
   display: -webkit-box;
   display: -webkit-flex;
@@ -174,13 +188,13 @@ img{width: 100%;}
   position: absolute;
   }
   .liee{font-size: 18px;
-    color: #efefef;
-  background-color:#343233;
+  color: #313131;
+  background-color: #cac9c9;
   padding: 15px;
   margin-top: 10px;
   margin-bottom: 10px;
   border-radius: 8px;}
-  .liee:hover{background-color: #4f4f4f;
+  .liee:hover{background-color: #dedede;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);}
   .profile_small{float: left;
     width: 50px;
@@ -190,7 +204,7 @@ img{width: 100%;}
     margin-bottom: 0px;}
 /*# sourceMappingURL=style.css.map */</style>
 
-
+<div class="page-bg"></div>
 <div class="container">
 		<div class="card">
 			<div class="container-fliud">
