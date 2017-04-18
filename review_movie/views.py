@@ -34,6 +34,8 @@ class UpdateReview(UpdateView):
 
 
 class DeleteReview(DeleteView):
+    # model = Review
+    # success_url = reverse_lazy('movie:movie')
     pass
 
 
