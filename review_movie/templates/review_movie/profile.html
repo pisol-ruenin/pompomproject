@@ -1,9 +1,132 @@
 {% extends 'review_movie/base.html'%}
 {% block title %}My Profile{% endblock %}
 {% block body %}
-<h1>PROFILE</h1>
-<div>Name : {{ request.user.username }}</div>
-<div>E-mail : {{ request.user.email }}</div>
-<div>Nickname : {{ request.user.userprofile.nickname }}</div>
-<div>Job : {{ request.user.userprofile.job }}</div>
+<script type="text/javascript">
+$(document).ready(function() {
+    var panels = $('.user-infos');
+    var panelsButton = $('.dropdown-user');
+    panels.hide();
+
+    //Click dropdown
+    panelsButton.click(function() {
+        //get data-for attribute
+        var dataFor = $(this).attr('data-for');
+        var idFor = $(dataFor);
+
+        //current button
+        var currentButton = $(this);
+        idFor.slideToggle(400, function() {
+            //Completed slidetoggle
+            if(idFor.is(':visible'))
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
+            }
+            else
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
+            }
+        })
+    });
+
+
+    $('[data-toggle="tooltip"]').tooltip();
+
+    $('button').click(function(e) {
+        e.preventDefault();
+        alert("This is a demo.\n :-)");
+    });
+});</script>
+<style type="text/css">
+.user-row {
+    margin-bottom: 14px;
+}
+.user-row:last-child {
+    margin-bottom: 0;
+}
+.dropdown-user {
+    margin: 13px 0;
+    padding: 5px;
+    height: 100%;
+}
+.dropdown-user:hover {
+    cursor: pointer;
+}
+.table-user-information > tbody > tr {
+    border-top: 1px solid rgb(221, 221, 221);
+}
+.table-user-information > tbody > tr:first-child {
+    border-top: 0;
+}
+.table-user-information > tbody > tr > td {
+    border-top: 0;
+}
+.toppad
+{margin-top:20px;
+}
+.btn-primary{margin-bottom: 5px;}
+.panel-info{width: 700px;}
+@media (max-width:900px){
+  .panel-info{width: 90%;}
+}
+.panel-heading{color: #ffffff !important;
+    background-color: #ecad53 !important;
+    border-color: rgba(0, 0, 0, 0) !important;
+    border-top-right-radius: 7px ;
+    border-top-left-radius: 7px;
+}
+.panel-body{
+  background-color: #ebeef9;
+}
+.panel{border-radius: 10px ;
+}
+.panel-info{border-color: #4a5469 !important}
+.panel-footer{background-color: #6e7b9e;}
+</style>
+<br><br>
+<center>
+<div class="panel panel-info">
+<div class="panel-heading">
+<h2 class="panel-title">Profile {{ request.user.username }}</h2>
+</div>
+<div class="panel-body">
+<div class="row">
+<div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{ request.user.userprofile.profile_img.url }}" class="img-circle img-responsive"> </div>
+<div class=" col-md-9 col-lg-9 ">
+<table class="table table-user-information">
+<tbody>
+  <tr>
+    <td>Name : </td>
+    <td>{{ request.user.username }}</td>
+  </tr>
+  <tr>
+    <td>E-mail : </td>
+    <td>{{ request.user.email }}</td>
+  </tr>
+  <tr>
+    <td>Nickname : </td>
+    <td>{{ request.user.userprofile.nickname }}</td>
+  </tr>
+
+         <tr>
+    <td>Job : </td>
+    <td>{{ request.user.userprofile.job }}</td>
+  </tr>
+
+
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+<div class="panel-footer">
+    <span class="pull-right">
+      <a href="#" class="btn btn-warning">เปลี่ยนรูปโปรไฟล์</a>
+      <a href="#" class="btn btn-warning">แก้ไขข้อมูล <i class="glyphicon glyphicon-edit"></i></a>
+        <!-- <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a> -->
+    </span><br><br>
+</div>
+
+</div>
+</center>
 {% endblock %}
