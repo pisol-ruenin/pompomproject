@@ -48,7 +48,7 @@
       <div class="caption">
         <img src="{{ movie.movie_poster.url }}" class="thumbpic">
         <h3>{{ movie.name }}</h3>
-        <p>{{ movie.synopsis|truncatechars:50 }}</p>
+        <p>{{ movie.synopsis|truncatechars:100 }}</p>
         <p><a href="{% url 'review_movie:movie' movie.id %}" class="btn btn-primary" role="button">Read more</a></p>
       </div>
     </div>

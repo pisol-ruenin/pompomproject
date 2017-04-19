@@ -1,0 +1,14 @@
+{% extends 'review_movie/base.html' %}
+{% load static from staticfiles %}
+{% block body %}
+<h1>Review</h1>
+<a href="{% url 'review_movie:update_review' review.movie.pk review.pk %}"><button>Edit</button></a>
+<form action="{% url 'review_movie:delete_review' review.pk review.movie.pk %}" method="post">
+{% csrf_token %}
+<input type="hidden" name="review_pk" value="{{ review.pk }}" >
+<button type="submit">Delete</button>
+</form>
+<p>{{ review.topic }}</p>
+<p>{{ review.review }}</p>
+<p>{{ review.rating }}</p>
+{% endblock %}

@@ -104,10 +104,10 @@ span{color: #fff;}
         {% endif %}
         <div class="col-sm-6 col-md-4">
           <div class="thumbnail">
-            <a href="{% url 'review_movie:movie' movie.id %}"><img class="imgpos"src="{{ movie.movie_poster.url }}" alt="..."></a>
+            <a href="{% url 'review_movie:movie' movie.id %}"><img class="imgpos"src="{{ movie.movie_poster.url }}" alt="{{ movie.name }}"></a>
             <div class="caption">
               <a href="{% url 'review_movie:movie' movie.id %}"><h3>{{ movie.name }}</h3></a>
-              <p>Rating: 10/10</p>
+              <p>Rating: {{ movie.rating }}/10</p>
             </div>
           </div>
         </div>
