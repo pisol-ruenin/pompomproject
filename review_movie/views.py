@@ -1,4 +1,4 @@
-from django.views import generic
+from django.views.generic import DetailView, View, ListView
 from .models import Movie, UserProfile, Review
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
@@ -6,10 +6,12 @@ from django.contrib.auth.models import User
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import UserForm
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
+from django.contrib.auth.mixins import LoginRequiredMixin
+from django.core.urlresolvers import reverse_lazy
 # Create your views here.
 
 
-class IndexView(generic.ListView):
+class IndexView(ListView):
     template_name = 'review_movie/index.html'
     context_object_name = "movie_list"
 
@@ -17,26 +19,42 @@ class IndexView(generic.ListView):
         movie = Movie.objects.all()[::-1]
         return movie[:3] if len(movie) >= 3 else movie
 
+<<<<<<< HEAD
 class UpdateProfile(UpdateView):
+=======
+
+class UpdateProfile(LoginRequiredMixin, UpdateView):
+>>>>>>> 60acac3b88614004505d58bae4d92ac4ff57415c
     model = UserProfile
     fields = ['nickname', 'profile_img', 'job']
 
 
-class CreateReview(CreateView):
+class CreateReview(LoginRequiredMixin, CreateView):
+    template_name = 'review_movie/add_review.html'
     model = Review
-    fields = ['review', 'score']
+    fields = ['topic', 'review', 'rating']
+
+    def form_valid(self, form):
+        user = self.request.user
+        movie = Movie.objects.get(pk=self.kwargs['pk'])
+        form.instance.movie = movie
+        form.instance.reviewer = user
+        return super(CreateReview, self).form_valid(form)
 
 
-class UpdateReview(UpdateView):
+class UpdateReview(LoginRequiredMixin, UpdateView):
+    template_name = 'review_movie/edit_review.html'
     model = Review
-    fields = ['review', 'score']
+    pk_url_kwarg = 'review_pk'
+    fields = ['topic', 'review', 'rating']
 
 
-class DeleteReview(DeleteView):
-    pass
+class DeleteReview(LoginRequiredMixin, DeleteView):
+    model = Review
+    success_url = reverse_lazy('review_movie:index')
 
 
-class AllMovieView(generic.ListView):
+class AllMovieView(ListView):
     context_object_name = "movie_list"
     template_name = 'review_movie/all_movie.html'
     paginate_by = 9
@@ -46,24 +64,40 @@ class AllMovieView(generic.ListView):
         return movie
 
 
-class MovieView(generic.DetailView):
+class ReviewView(DetailView):
+    model = Review
+    template_name = 'review_movie/review.html'
+    pk_url_kwarg = 'review_pk'
+
+
+class MovieView(DetailView):
     model = Movie
     template_name = 'review_movie/movie.html'
 
     def get_context_data(self, **kwargs):
         context = super(MovieView, self).get_context_data(**kwargs)
         context['reviews'] = Review.objects.filter(movie=self.get_object())
+        movie = self.get_object()
+        context['rating'] = 0
+        for review in context['reviews']:
+            context['rating'] += review.rating
+        try:
+            context['rating'] /= len(context['reviews'])
+        except ZeroDivisionError:
+            context['rating'] = 0.0
+        movie.rating = context['rating']
+        movie.save()
         return context
 
 
-class ProfileView(generic.View):
+class ProfileView(LoginRequiredMixin, View):
     template_name = 'review_movie/profile.html'
 
     def get(self, request):
         return render(request, self.template_name)
 
 
-class UserFormView(generic.View):
+class UserFormView(View):
     form_class = UserForm
     template_name = 'review_movie/register.html'
 

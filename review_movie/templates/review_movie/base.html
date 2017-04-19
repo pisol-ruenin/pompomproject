@@ -60,7 +60,13 @@
       <ul class="dropdown-menu">
         <li><center><img class="profile" src="{{ request.user.userprofile.profile_img.url }}"></center></li>
         <li><a class="drop-text" href="{% url 'review_movie:profile' %}">{{ request.user.userprofile.nickname }}</a></li>
-        <li><a class="drop-text" href="#">{{ request.user.groups.all.0 }}</a></li>
+        <li><a class="drop-text" href="#">Level :
+        {% if request.user.groups.all.0 is None %}
+          Member
+        {% else %}
+          {{ request.user.groups.all.0 }}
+        {% endif %}
+        </a></li>
         <li role="separator" class="divider"></li>
         <li><a class="drop-text" href="{% url 'review_movie:logout' %}">Log out</a></li>
     </ul>
