@@ -230,7 +230,7 @@ img{width: 100%;}
             <p class="product-description">
             {{ movie.synopsis }}
             </p>
-            <p><h3>Rating : {{ rating }} / 10.0</h3></p>
+            <p><h3>Rating : {{ rating|floatformat:1 }} / 10.0</h3></p>
 					</div>
 				</div>
         <br>
