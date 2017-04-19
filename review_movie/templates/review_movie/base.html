@@ -14,8 +14,15 @@
       background-color: #374c61!important ;}
       .form-search:focus{background-color:#3f576f !important;}
       .drop-text{color: #fff !important;}
+      .drop-text:hover{color: #333 !important;}
       .profile{margin-top: 10px;
       margin-bottom: 10px;}
+    /*.form-search{float: left;}*/
+    .per80{width: 80%;
+    float: left;}
+    .per20{width: 20%;}
+    .logo{width: 30px;
+    height: 30px !important;}
       </style>
 </head>
 <body>
@@ -29,7 +36,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
         </button>
-        <a class="navbar-brand" href="{% url 'review_movie:index' %}">Free Popcorn</a>
+        <a class="navbar-brand" href="{% url 'review_movie:index' %}">Free <span><img class="logo" src="{% static 'review_movie/img/logo.png' %}"></img></span> ป๊อปคอร์น</a>
     </div>
 
     <!-- Collect the nav links, forms, and other content for toggling -->
@@ -41,8 +48,8 @@
     </ul>
     <form class="navbar-form navbar-left">
         <div class="form-group">
-          <input type="text" class="form-control form-search" placeholder="Search">
-          <button type="submit" class="form-control form-search"><i class="fa fa-search"></i></button>
+          <input type="text" class="form-control form-search per80" placeholder="Search">
+          <button type="submit" class="form-control form-search per20"><i class="fa fa-search"></i></button>
       </div>
 
   </form>

@@ -6773,19 +6773,19 @@ button.close {
 }
 /** {box-sizing:border-box}*/
 .thumbpic{float: left;
-width: 150px;
+height: 220px;
 padding: 10px;}
 
 @media (max-width: 768px) {
 .thumbpic{margin: 5px;
-    width: 130px;}
+    height: 170px;}
 }
 @media (max-width: 472px) {
 .thumbnail{height: auto;}
 }
 @media (max-width: 400px) {
 .thumbpic{margin: 5px;
-    width: 100px;}
+    height: 160px;}
 }
 
 .footfu{background-color:#273746 ;
