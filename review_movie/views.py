@@ -17,7 +17,6 @@ class IndexView(generic.ListView):
         movie = Movie.objects.all()[::-1]
         return movie[:3] if len(movie) >= 3 else movie
 
-
 class UpdateProfile(UpdateView):
     model = UserProfile
     fields = ['nickname', 'profile_img', 'job']
