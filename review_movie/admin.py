@@ -1,6 +1,5 @@
 from django.contrib import admin
-from .models import Movie
-from .models import Review
+from .models import Movie, Review, UserProfile
 from django.forms import Textarea, TextInput
 from django.db import models
 
@@ -20,3 +19,4 @@ class ReviewModelAdmin(admin.ModelAdmin):
 
 admin.site.register(Movie, MovieModelAdmin)
 admin.site.register(Review, ReviewModelAdmin)
+admin.site.register(UserProfile)

@@ -1,6 +1,7 @@
 {% extends 'review_movie/base.html' %}
 {% load static from staticfiles %}
 {% load mathfilters %}
+{% block nav_allmovie %}active{% endblock %}
 {% block body %}
 
 <style type="text/css">    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
@@ -77,6 +78,20 @@ ul li.a{
 }
 .thumbnail:hover{background-color: #6e7b98;}
 span{color: #fff;}
+
+
+@media (min-width: 992px) {
+.imgpos{height: 300px !important;}
+}
+@media (min-width: 1092px) {
+.imgpos{height: 350px!important;}
+}
+@media (min-width: 1125px) {
+.imgpos{height: 430px!important;}
+}
+@media (min-width: 1367px) {
+.imgpos{height: auto !important;}
+}
 </style>
 <body>
 
@@ -89,7 +104,7 @@ span{color: #fff;}
         {% endif %}
         <div class="col-sm-6 col-md-4">
           <div class="thumbnail">
-            <a href="{% url 'review_movie:movie' movie.id %}"><img src="{{ movie.movie_poster.url }}" alt="..."></a>
+            <a href="{% url 'review_movie:movie' movie.id %}"><img class="imgpos"src="{{ movie.movie_poster.url }}" alt="..."></a>
             <div class="caption">
               <a href="{% url 'review_movie:movie' movie.id %}"><h3>{{ movie.name }}</h3></a>
               <p>Rating: 10/10</p>
@@ -105,13 +120,13 @@ span{color: #fff;}
       <center>
         <span>
           {% if page_obj.has_previous %}
-          <a href="?page={{ page_obj.previous_page_number }}">previous</a>
+          <a href="?page={{ page_obj.previous_page_number }}">Previous</a>
           {% endif %}
           <span>
-            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
           </span>
           {% if page_obj.has_next %}
-          <a href="?page={{ page_obj.next_page_number }}">next</a>
+          <a href="?page={{ page_obj.next_page_number }}">Next</a>
           {% endif %}
         </span>
       <center>

@@ -1,5 +1,6 @@
 {% extends 'review_movie/base.html' %}
 {% load static from staticfiles %}
+{% block nav_home %}active{% endblock %}
 {% block body %}
 <div id="myCarousel" class="carousel slide" data-ride="carousel">
   <!-- Indicators -->
@@ -41,38 +42,18 @@
 </div>
 <br>
 <div class="row">
+  {% for movie in movie_list %}
   <div class="col-sm-6 col-md-4">
     <div class="thumbnail">
       <div class="caption">
-        <img src="{% static 'review_movie/img/poster/logan.jpg' %}" class="thumbpic">
-        <h3>Logan - Twenty Century Fox</h3>
-        <p>"โลแกน" และแล้วก็มาถึงฉากสุดท้ายของตำนาน ฮีโร่ผู้ได้ชื่อว่าเป็นตัวเอกของแฟรนไชน์ภาพยนต์ X-men มานาน วันนี้ .....</p>
-        <p><a href="#" class="btn btn-primary" role="button">Read more</a></p>
+        <img src="{{ movie.movie_poster.url }}" class="thumbpic">
+        <h3>{{ movie.name }}</h3>
+        <p>{{ movie.synopsis|truncatechars:50 }}</p>
+        <p><a href="{% url 'review_movie:movie' movie.id %}" class="btn btn-primary" role="button">Read more</a></p>
       </div>
     </div>
   </div>
-
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <div class="caption">
-        <img src="{% static 'review_movie/img/poster/interstellar.jpg' %}" class="thumbpic">
-        <h3>Interstellar - Wanner Bros.</h3>
-        <p>ทะยานดาวกู้โลก หนังไซไฟที่ผู้เขียนชอบที่สุด หนังอะไรเนี่ย ชอบมากๆเลย อ๊ากกกกกกกก .....</p>
-        <p><a href="#" <button class="btn btn-primary">Read more</button></a></p>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-6 col-md-4">
-    <div class="thumbnail">
-      <div class="caption">
-        <img src="{% static 'review_movie/img/poster/spiderman-homecomming.jpg' %}" class="thumbpic">
-        <h3>Spiderman Homecomming - Marvel Studio</h3>
-        <p>หลังจากได้ลิขสิทธิ์ร่วมสร้าง ทำสัญญากันเป็นที่เรียบร้อย "ไอ้แมงมุม" ของเรา ก็ได้.....</p>
-        <p><a href="#" class="btn btn-primary" role="button">Read more</a></p>
-      </div>
-    </div>
-  </div>
+  {% endfor %}
 </div>
 <footer class="footfu">
   <center>Copyright 2017 PomPom Project / computer science - CMU</center>
