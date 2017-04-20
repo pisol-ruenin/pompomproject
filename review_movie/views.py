@@ -22,7 +22,7 @@ class IndexView(ListView):
 
 class UpdateProfile(LoginRequiredMixin, UpdateView):
     model = UserProfile
-    fields = ['nickname', 'profile_img', 'job']
+    fields = ['firstname', 'lastname', 'nickname', 'profile_img', 'job']
 
 
 class CreateReview(LoginRequiredMixin, CreateView):
