@@ -15,7 +15,11 @@ urlpatterns = [
     url(r'^profile/$', views.ProfileView.as_view(), name='profile'),
     url(r'^movie/(?P<pk>[0-9]+)/$',
         views.MovieView.as_view(), name='movie'),
+<<<<<<< HEAD
     url(r'profile/(?P<pk>[0-9]+)/update/$',
+=======
+    url(r'^profile/(?P<pk>[0-9]+)/$',
+>>>>>>> 62d784e374691f185e1c725afc3c5c70f029d1e2
         views.UpdateProfile.as_view(), name='update_profile'),
     url(r'movie/(?P<pk>[0-9]+)/add_review/$',
         views.CreateReview.as_view(), name='add_review'),
@@ -24,5 +28,9 @@ urlpatterns = [
     url(r'movie/(?P<pk>[0-9]+)/review/(?P<review_pk>[0-9]+)/update/$',
         views.UpdateReview.as_view(), name='update_review'),
     url(r'movie/(?P<pk>[0-9]+)/review/(?P<review_pk>[0-9]+)/delete/$',
+<<<<<<< HEAD
         views.DeleteReview.as_view(), name='delete_review')
+=======
+        views.DeleteReview.as_view(), name='delete_review'),
+>>>>>>> 62d784e374691f185e1c725afc3c5c70f029d1e2
 ]
