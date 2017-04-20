@@ -5,9 +5,11 @@ from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import UserForm
+from django.http import HttpResponseRedirect
 from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
-from django.contrib.auth.mixins import LoginRequiredMixin
-from django.core.urlresolvers import reverse_lazy
+from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.core.urlresolvers import reverse_lazy, reverse
+
 # Create your views here.
 
 
@@ -19,18 +21,26 @@ class IndexView(ListView):
         movie = Movie.objects.all()[::-1]
         return movie[:3] if len(movie) >= 3 else movie
 
-# class UpdateProfile(UpdateView):
-# =======
 
 class UpdateProfile(LoginRequiredMixin, UpdateView):
     model = UserProfile
     fields = ['nickname', 'profile_img', 'job']
 
 
-class CreateReview(LoginRequiredMixin, CreateView):
+class CreateReview(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
+    permission_required = 'review_movie.add_review'
     template_name = 'review_movie/add_review.html'
+    raise_exception = True
     model = Review
     fields = ['topic', 'review', 'rating']
+
+    def dispatch(self, *args, **kwargs):
+        try:
+            review = Review.objects.filter(
+                movie__pk=self.kwargs['pk']).get(reviewer=self.request.user)
+            return HttpResponseRedirect(reverse('review_movie:movie', kwargs={'pk': self.kwargs['pk']}))
+        except:
+            return super(CreateReview, self).dispatch(*args, **kwargs)
 
     def form_valid(self, form):
         user = self.request.user
@@ -40,16 +50,35 @@ class CreateReview(LoginRequiredMixin, CreateView):
         return super(CreateReview, self).form_valid(form)
 
 
-class UpdateReview(LoginRequiredMixin, UpdateView):
+class UpdateReview(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):
+    permission_required = 'review_movie.change_review'
     template_name = 'review_movie/edit_review.html'
+    raise_exception = True
     model = Review
     pk_url_kwarg = 'review_pk'
     fields = ['topic', 'review', 'rating']
 
+    def dispatch(self, *args, **kwargs):
+        review = Review.objects.get(pk=self.kwargs['review_pk'])
+        if self.request.user != review.reviewer:
+            return HttpResponseRedirect(reverse('review_movie:review', kwargs={'pk': self.kwargs['pk'], 'review_pk': self.kwargs['review_pk']}))
+        return super(UpdateReview, self).dispatch(*args, **kwargs)
 
-class DeleteReview(LoginRequiredMixin, DeleteView):
+
+class DeleteReview(PermissionRequiredMixin, LoginRequiredMixin, DeleteView):
+    permission_required = 'review_movie.delete_review'
+    raise_exception = True
     model = Review
-    success_url = reverse_lazy('review_movie:index')
+
+    def get_success_url(self, *args, **kwargs):
+        print(self.kwargs)
+        return reverse('review_movie:movie', kwargs={'pk': self.kwargs['review_pk']})
+
+    def dispatch(self, *args, **kwargs):
+        review = Review.objects.get(pk=self.kwargs['pk'])
+        if self.request.user != review.reviewer:
+            return HttpResponseRedirect(reverse('review_movie:review', kwargs={'pk': self.kwargs['pk'], 'review_pk': self.kwargs['review_pk']}))
+        return super(DeleteReview, self).dispatch(*args, **kwargs)
 
 
 class AllMovieView(ListView):
@@ -75,6 +104,12 @@ class MovieView(DetailView):
     def get_context_data(self, **kwargs):
         context = super(MovieView, self).get_context_data(**kwargs)
         context['reviews'] = Review.objects.filter(movie=self.get_object())
+        try:
+            reviewer = Review.objects.filter(
+                movie=self.get_object()).get(reviewer=self.request.user)
+            context['ck_review'] = True
+        except:
+            context['ck_review'] = False
         movie = self.get_object()
         context['rating'] = 0
         for review in context['reviews']:
