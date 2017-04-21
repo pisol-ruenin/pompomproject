@@ -1,5 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
+from django.core.urlresolvers import reverse
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 # Create your models here.
 
@@ -14,6 +16,7 @@ class Movie(models.Model):
     film_production = models.CharField(max_length=100)
     movie_poster = models.ImageField()
     trailer_video = models.CharField(max_length=1000)
+    rating = models.FloatField()
 
     def __str__(self):
         return self.name + ' - ' + self.film_production
@@ -22,9 +25,11 @@ class Movie(models.Model):
 class UserProfile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, primary_key=True)
-    nickname = models.CharField(max_length=50)
+    nickname = models.CharField(
+        max_length=50, default='Please define your name')
     job = models.CharField(max_length=50)
-    profile_img = models.ImageField()
+    profile_img = models.ImageField(default='default/defult_profile.png')
+    balance = models.FloatField(default=0)
 
     def __str__(self):
         return str(self.user)
@@ -34,9 +39,13 @@ class Review(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     topic = models.CharField(max_length=50)
     review = models.TextField(max_length=1000)
-    score = models.IntegerField()
+    rating = models.IntegerField(
+        validators=[MaxValueValidator(10), MinValueValidator(0)])
     reviewer = models.ForeignKey(User, null=True)
     review_date = models.DateField(auto_now_add=True)
+
+    def get_absolute_url(self):
+        return reverse('review_movie:review', kwargs={'pk': self.movie.pk, 'review_pk': self.pk})
 
     def __str__(self):
         return str(self.movie.name) + ' - ' + str(self.reviewer) + ' #' + str(self.review_date)

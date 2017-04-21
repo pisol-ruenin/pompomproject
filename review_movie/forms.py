@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User
+from .models import Review
 from django import forms
-
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
@@ -14,7 +14,6 @@ class UserForm(forms.ModelForm):
         cleaned_data = super(UserForm, self).clean()
         password = cleaned_data.get("password")
         confirm_password = cleaned_data.get("confirm_password")
-        print(password, confirm_password)
         if password != confirm_password:
             msg = "password doesn't match"
             self.add_error('confirm_password', msg)
