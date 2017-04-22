@@ -38,7 +38,7 @@ class UserProfile(models.Model):
 class Review(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     topic = models.CharField(max_length=50)
-    review = models.TextField(max_length=1000)
+    review = models.TextField(max_length=8000)
     rating = models.IntegerField(
         validators=[MaxValueValidator(10), MinValueValidator(0)])
     reviewer = models.ForeignKey(User, null=True)
@@ -49,3 +49,18 @@ class Review(models.Model):
 
     def __str__(self):
         return str(self.movie.name) + ' - ' + str(self.reviewer) + ' #' + str(self.review_date)
+
+
+class ReviewerRequest(models.Model):
+    user = models.OneToOneField(
+        User, on_delete=models.CASCADE, primary_key=True)
+    topic = models.CharField(max_length=50)
+    request = models.TextField(max_length=5000)
+    request_date = models.DateField(auto_now_add=True)
+    confirm = models.BooleanField(default=False)
+
+    def get_absolute_url(self):
+        return reverse('review_movie:request_view', kwargs={'pk': self.movie.pk, 'review_pk': self.pk})
+
+    def __str__(self):
+        return self.topic + ' ' + str(self.user)
