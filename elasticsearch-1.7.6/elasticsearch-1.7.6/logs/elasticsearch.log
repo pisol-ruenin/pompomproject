@@ -1,0 +1,17 @@
+[2017-04-22 20:39:13,004][INFO ][node                     ] [Aries] version[1.7.6], pid[10856], build[c730b59/2016-11-18T15:21:16Z]
+[2017-04-22 20:39:13,005][INFO ][node                     ] [Aries] initializing ...
+[2017-04-22 20:39:13,061][INFO ][plugins                  ] [Aries] loaded [], sites []
+[2017-04-22 20:39:13,089][INFO ][env                      ] [Aries] using [1] data paths, mounts [[(E:)]], net usable_space [60.8gb], net total_space [366.9gb], types [NTFS]
+[2017-04-22 20:39:15,156][INFO ][node                     ] [Aries] initialized
+[2017-04-22 20:39:15,157][INFO ][node                     ] [Aries] starting ...
+[2017-04-22 20:39:15,334][INFO ][transport                ] [Aries] bound_address {inet[/0:0:0:0:0:0:0:0:9300]}, publish_address {inet[/10.80.9.227:9300]}
+[2017-04-22 20:39:15,503][INFO ][discovery                ] [Aries] elasticsearch/DLljDOkmSAKaY4vdwEh93w
+[2017-04-22 20:39:19,273][INFO ][cluster.service          ] [Aries] new_master [Aries][DLljDOkmSAKaY4vdwEh93w][AdrenalineD][inet[/10.80.9.227:9300]], reason: zen-disco-join (elected_as_master)
+[2017-04-22 20:39:19,347][INFO ][gateway                  ] [Aries] recovered [0] indices into cluster_state
+[2017-04-22 20:39:19,353][INFO ][http                     ] [Aries] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/10.80.9.227:9200]}
+[2017-04-22 20:39:19,353][INFO ][node                     ] [Aries] started
+[2017-04-22 20:40:46,250][INFO ][bootstrap                ] running graceful exit on windows
+[2017-04-22 20:40:46,251][INFO ][node                     ] [Aries] stopping ...
+[2017-04-22 20:40:46,271][INFO ][node                     ] [Aries] stopped
+[2017-04-22 20:40:46,271][INFO ][node                     ] [Aries] closing ...
+[2017-04-22 20:40:46,275][INFO ][node                     ] [Aries] closed
