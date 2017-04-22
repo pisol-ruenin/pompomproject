@@ -132,3 +132,20 @@ org.elasticsearch.index.shard.IllegalIndexShardStateException: [products_tutoria
 [2017-04-22 17:45:39,593][INFO ][node                     ] [Rachel van Helsing] stopped
 [2017-04-22 17:45:39,593][INFO ][node                     ] [Rachel van Helsing] closing ...
 [2017-04-22 17:45:39,605][INFO ][node                     ] [Rachel van Helsing] closed
+[2017-04-22 19:44:38,543][INFO ][node                     ] [Red Skull] version[1.7.6], pid[12964], build[c730b59/2016-11-18T15:21:16Z]
+[2017-04-22 19:44:38,544][INFO ][node                     ] [Red Skull] initializing ...
+[2017-04-22 19:44:38,600][INFO ][plugins                  ] [Red Skull] loaded [], sites []
+[2017-04-22 19:44:38,634][INFO ][env                      ] [Red Skull] using [1] data paths, mounts [[(E:)]], net usable_space [60.9gb], net total_space [366.9gb], types [NTFS]
+[2017-04-22 19:44:40,447][INFO ][node                     ] [Red Skull] initialized
+[2017-04-22 19:44:40,447][INFO ][node                     ] [Red Skull] starting ...
+[2017-04-22 19:44:40,633][INFO ][transport                ] [Red Skull] bound_address {inet[/0:0:0:0:0:0:0:0:9300]}, publish_address {inet[/10.80.9.227:9300]}
+[2017-04-22 19:44:40,795][INFO ][discovery                ] [Red Skull] elasticsearch/UuhLN_TQTbqpeAMM8Xdcvw
+[2017-04-22 19:44:44,566][INFO ][cluster.service          ] [Red Skull] new_master [Red Skull][UuhLN_TQTbqpeAMM8Xdcvw][AdrenalineD][inet[/10.80.9.227:9300]], reason: zen-disco-join (elected_as_master)
+[2017-04-22 19:44:44,665][INFO ][http                     ] [Red Skull] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/10.80.9.227:9200]}
+[2017-04-22 19:44:44,665][INFO ][node                     ] [Red Skull] started
+[2017-04-22 19:44:44,701][INFO ][gateway                  ] [Red Skull] recovered [3] indices into cluster_state
+[2017-04-22 19:56:11,450][INFO ][bootstrap                ] running graceful exit on windows
+[2017-04-22 19:56:11,450][INFO ][node                     ] [Red Skull] stopping ...
+[2017-04-22 19:56:11,499][INFO ][node                     ] [Red Skull] stopped
+[2017-04-22 19:56:11,499][INFO ][node                     ] [Red Skull] closing ...
+[2017-04-22 19:56:11,503][INFO ][node                     ] [Red Skull] closed
