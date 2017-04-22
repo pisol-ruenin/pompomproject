@@ -1,11 +1,25 @@
 {% extends 'review_movie/base.html' %}
 {% load static from staticfiles %}
 {% block body %}
-    <center><h1>Request</h1>
-    <div class="form-logre">
+
+<style type="text/css">
+.text_box
+    {width: 80%;
+}
+h1.font {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+
+    </style>
+}
+<center><div class="text_box" >
+    <center><h1 class="font" style="color: white" >Request</h1>
+    <div class="form-logre" style="color: white">
     <form method="post" action="">
         {% csrf_token %}
         {% include 'review_movie/form_template.html' %}
-        <button class="btn btn-default" type="submit">Submit</button> <button class="btn btn-default" type="reset">Reset</button>
+        <button class="btn  btn-info btn-default" type="submit">Submit</button> <button class="btn btn-info btn-default" type="reset">Reset</button>
     <form></div>
+    </center>
+</div>
 {% endblock %}
