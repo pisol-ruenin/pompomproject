@@ -1,0 +1,175 @@
+{% extends 'review_movie/base.html' %}
+{% load static from staticfiles %}
+{% load mathfilters %}
+{% load widget_tweaks %}
+{% block nav_allmovie %}active{% endblock %}
+{% block body %}
+
+<style type="text/css">    /* Set height of the grid so .sidenav can be 100% (adjust if needed) */
+  .row.content {
+    max-width: 100%;
+    float: right;
+    height: auto;
+  }
+
+  .col-sm-3{
+    background-color: #5a657d;
+    border-radius: 10px;
+    padding: 5px;
+  }
+
+  /* Set gray background color and 100% height */
+  .sidenav {
+    background-color: #f1f1f1;
+    height: 100%;
+  }
+
+
+  /* Set black background color, white text and some padding */
+  footer {
+    background-color: #555;
+    color: white;
+    padding: 15px;
+  }
+
+  /* On small screens, set height to 'auto' for sidenav and grid */
+  @media screen and (max-width: 767px) {
+    .sidenav {
+      height: auto;
+      padding: 15px;
+    }
+    .row.content {height: auto;}
+  }
+
+  img{width: 100%;}
+
+  .thumbnail{
+    background-color: #5a657d;
+    height: auto;
+  }
+  .color-container{
+    background-color: #4a5469;
+  }
+
+  .sidebar1 {
+    background: #F17153;
+    /* For browsers that do not support gradients */
+    background: -webkit-linear-gradient(#F17153, #F58D63, #f1ab53);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#F17153, #F58D63, #f1ab53);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#F17153, #F58D63, #f1ab53);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#F17153, #F58D63, #f1ab53);
+    /* Standard syntax */
+    padding: 0px;
+    min-height: 100%;
+  }
+.prelist{padding:  10px 0px 10px 20px;
+font-size: 1.5em;}
+ul.a {list-style-type: circle;
+background-color: #4a5469;
+margin:  10px;
+padding-top: 5px;
+padding-bottom: 5px;}
+ul li.a{
+    color: #8ae28b;
+    margin-top: 5px;
+    font-size: 1.1em;
+}
+.thumbnail:hover{background-color: #6e7b98;}
+span{color: #fff;}
+
+
+@media (min-width: 992px) {
+.imgpos{height: 300px !important;}
+}
+@media (min-width: 1092px) {
+.imgpos{height: 350px!important;}
+}
+@media (min-width: 1125px) {
+.imgpos{height: 430px!important;}
+}
+@media (min-width: 1500px) {
+.imgpos{height: auto !important;}
+}
+</style>
+  <div class="container-fluid color-container""><br>
+    <div class="col-sm-9">
+    <div class="col-sm-12">
+    <form class="navbar-form navbar-left" action="." method="get">
+       <center>
+        <div class="form-group ">
+          <input type="text" name='q' class="form-control form-search per80" placeholder="Search">
+          <button type="submit" class="form-control form-search per20"><i class="fa fa-search"></i></button>
+        </div>
+        </center>
+    </form>
+    </div>
+
+    {% if query %}
+        {% for result in page_obj.object_list %}
+        {% if forloop.counter0|mod:3 == 0 %}
+        <div class="row">
+        {% endif %}
+        <div class="col-sm-6 col-md-4">
+          <div class="thumbnail">
+            <a href="{% url 'review_movie:movie' result.object.id %}"><img class="imgpos"src="{{ result.object.movie_poster.url }}" alt="{{ result.name }}"></a>
+            <div class="caption">
+              <a href="{% url 'review_movie:movie' result.object.id %}"><h3>{{ result.name }}</h3></a>
+              <p>Rating: {{ result.rating|floatformat:1 }}/10</p>
+            </div>
+          </div>
+        </div>
+      {% if forloop.counter0|mod:3 == 2 or forloop.last %}
+      </div>
+      {% endif %}
+      {% empty %}
+      <center><h1>Not found</h1><center>
+      {% endfor %}
+      {% if page_obj.has_previous or page_obj.has_next %}
+      <div>
+      <center>
+        <span>
+          {% if page_obj.has_previous %}
+          <a href="?q={{ query }}&amp;page={{ page_obj.previous_page_number }}">Previous</a>
+          {% endif %}
+          <span>
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+          </span>
+          {% if page_obj.has_next %}
+          <a href="?q={{ query }}&amp;page={{ page_obj.next_page_number }}">Next</a>
+          {% endif %}
+        </span>
+      <center>
+      </div>
+      {% endif %}
+      {% else %}
+      
+       
+      {% endif %}
+    </div>
+
+
+  <div class="col-sm-3">
+    <div class="prelist">Category</div>
+    <div>
+      <ul class="a">
+        <li class="a"><span>Action</li>
+        <li class="a"><span>Adventure </li>
+        <li class="a"><span>Drama </li>
+        <li class="a"><span>Sci-Fi </li>
+        <li class="a"><span>Family </li>
+        <li class="a"><span>Thriller </li>
+        <li class="a"><span>Crime </li>
+        <li class="a"><span>Animation </li>
+        <li class="a"><span>Comedy </li>
+        <li class="a"><span>Fantasy </li>
+        <li class="a"><span>Romance </li>
+      </ul>
+    </div>
+
+  </div>
+
+  </div>
+{% endblock %}
