@@ -7,7 +7,10 @@
   .btn-group{margin-top: 7px;}
   .fb-comments{width: 10px;}
   .panel-default{border-radius: 0px;}
+  .panel-heading{background-color: #297ca5 !important;}
 </style>
+<!-- ddddddd -->
+
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -19,7 +22,7 @@
 <br><br><br><div class="container">
     <div class="panel panel-default">
         <div class="panel-heading">
-          <h1 style="float:left">{{ review.topic }}</h1>
+          <h1 style="float:left; color: white; text-shadow: 2px 1px 8px black">{{ review.topic }}</h1>
             <div class="btn-group" style="float:right;">
             {% if request.user == review.reviewer or request.user.is_superuser %}
               <a href="{% url 'review_movie:update_review' review.movie.pk review.pk %}">
@@ -32,7 +35,7 @@
             </div>
             <div class="clearfix"></div>
         </div>
-        <div class="panel-body">
+        <div class="panel-body" style="background-color: #FEFCD5>
                 Score = {{ review.rating }} / 10
                 <div class="media-body">
                 <p>{{ review.review }}</p>
