@@ -1,0 +1,12 @@
+[2017-04-22 20:24:13,035][INFO ][node                     ] [Big Wheel] version[1.7.6], pid[4393], build[c730b59/2016-11-18T15:21:16Z]
+[2017-04-22 20:24:13,035][INFO ][node                     ] [Big Wheel] initializing ...
+[2017-04-22 20:24:13,458][INFO ][plugins                  ] [Big Wheel] loaded [], sites []
+[2017-04-22 20:24:13,611][INFO ][env                      ] [Big Wheel] using [1] data paths, mounts [[/ (/dev/disk1)]], net usable_space [63.5gb], net total_space [111.8gb], types [hfs]
+[2017-04-22 20:24:26,431][INFO ][node                     ] [Big Wheel] initialized
+[2017-04-22 20:24:26,433][INFO ][node                     ] [Big Wheel] starting ...
+[2017-04-22 20:24:26,700][INFO ][transport                ] [Big Wheel] bound_address {inet[/0:0:0:0:0:0:0:0:9300]}, publish_address {inet[/10.80.86.32:9300]}
+[2017-04-22 20:24:26,761][INFO ][discovery                ] [Big Wheel] elasticsearch/XevJQLVrTCSYK-Eu5bFDsw
+[2017-04-22 20:24:30,572][INFO ][cluster.service          ] [Big Wheel] new_master [Big Wheel][XevJQLVrTCSYK-Eu5bFDsw][sawarintipwiangs-MacBook-Air.local][inet[/10.80.86.32:9300]], reason: zen-disco-join (elected_as_master)
+[2017-04-22 20:24:30,623][INFO ][http                     ] [Big Wheel] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/10.80.86.32:9200]}
+[2017-04-22 20:24:30,624][INFO ][node                     ] [Big Wheel] started
+[2017-04-22 20:24:30,665][INFO ][gateway                  ] [Big Wheel] recovered [0] indices into cluster_state
