@@ -169,3 +169,15 @@ org.elasticsearch.index.shard.IllegalIndexShardStateException: [products_tutoria
 [2560-04-22 19:41:11,099][INFO ][cluster.metadata         ] [Force] [movie] create_mapping [modelresult]
 [2560-04-22 19:41:11,814][INFO ][cluster.metadata         ] [Force] [movie] update_mapping [modelresult] (dynamic)
 >>>>>>> origin/master
+[2017-04-22 20:19:34,097][INFO ][node                     ] [Onyxx] version[1.7.6], pid[7956], build[c730b59/2016-11-18T15:21:16Z]
+[2017-04-22 20:19:34,097][INFO ][node                     ] [Onyxx] initializing ...
+[2017-04-22 20:19:34,153][INFO ][plugins                  ] [Onyxx] loaded [], sites []
+[2017-04-22 20:19:34,181][INFO ][env                      ] [Onyxx] using [1] data paths, mounts [[(E:)]], net usable_space [60.9gb], net total_space [366.9gb], types [NTFS]
+[2017-04-22 20:19:36,061][INFO ][node                     ] [Onyxx] initialized
+[2017-04-22 20:19:36,061][INFO ][node                     ] [Onyxx] starting ...
+[2017-04-22 20:19:36,248][INFO ][transport                ] [Onyxx] bound_address {inet[/0:0:0:0:0:0:0:0:9300]}, publish_address {inet[/10.80.9.227:9300]}
+[2017-04-22 20:19:36,414][INFO ][discovery                ] [Onyxx] elasticsearch/2DPo9fOgQuqMAsKV1zCxQQ
+[2017-04-22 20:19:40,183][INFO ][cluster.service          ] [Onyxx] new_master [Onyxx][2DPo9fOgQuqMAsKV1zCxQQ][AdrenalineD][inet[/10.80.9.227:9300]], reason: zen-disco-join (elected_as_master)
+[2017-04-22 20:19:40,286][INFO ][http                     ] [Onyxx] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/10.80.9.227:9200]}
+[2017-04-22 20:19:40,286][INFO ][node                     ] [Onyxx] started
+[2017-04-22 20:19:40,385][INFO ][gateway                  ] [Onyxx] recovered [3] indices into cluster_state
