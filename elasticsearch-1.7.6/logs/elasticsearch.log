@@ -132,3 +132,20 @@ org.elasticsearch.index.shard.IllegalIndexShardStateException: [products_tutoria
 [2017-04-22 17:45:39,593][INFO ][node                     ] [Rachel van Helsing] stopped
 [2017-04-22 17:45:39,593][INFO ][node                     ] [Rachel van Helsing] closing ...
 [2017-04-22 17:45:39,605][INFO ][node                     ] [Rachel van Helsing] closed
+[2560-04-22 19:39:54,724][WARN ][bootstrap                ] jvm uses the client vm, make sure to run `java` with the server vm for best performance by adding `-server` to the command line
+[2560-04-22 19:39:55,256][INFO ][node                     ] [Force] version[1.7.6], pid[6272], build[c730b59/2016-11-18T15:21:16Z]
+[2560-04-22 19:39:55,256][INFO ][node                     ] [Force] initializing ...
+[2560-04-22 19:39:55,492][INFO ][plugins                  ] [Force] loaded [], sites []
+[2560-04-22 19:39:55,822][INFO ][env                      ] [Force] using [1] data paths, mounts [[(C:)]], net usable_space [52.8gb], net total_space [100.5gb], types [NTFS]
+[2560-04-22 19:40:02,477][INFO ][node                     ] [Force] initialized
+[2560-04-22 19:40:02,478][INFO ][node                     ] [Force] starting ...
+[2560-04-22 19:40:04,579][INFO ][transport                ] [Force] bound_address {inet[/0:0:0:0:0:0:0:0:9300]}, publish_address {inet[/10.80.136.180:9300]}
+[2560-04-22 19:40:07,692][INFO ][discovery                ] [Force] elasticsearch/jLlnLUUFR0Cx9BzX29kFyA
+[2560-04-22 19:40:11,547][INFO ][cluster.service          ] [Force] new_master [Force][jLlnLUUFR0Cx9BzX29kFyA][Secretwrd-PC][inet[/10.80.136.180:9300]], reason: zen-disco-join (elected_as_master)
+[2560-04-22 19:40:12,191][INFO ][gateway                  ] [Force] recovered [3] indices into cluster_state
+[2560-04-22 19:40:14,492][INFO ][http                     ] [Force] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/10.80.136.180:9200]}
+[2560-04-22 19:40:14,496][INFO ][node                     ] [Force] started
+[2560-04-22 19:41:10,133][INFO ][cluster.metadata         ] [Force] [movie] deleting index
+[2560-04-22 19:41:10,839][INFO ][cluster.metadata         ] [Force] [movie] creating index, cause [api], templates [], shards [5]/[1], mappings []
+[2560-04-22 19:41:11,099][INFO ][cluster.metadata         ] [Force] [movie] create_mapping [modelresult]
+[2560-04-22 19:41:11,814][INFO ][cluster.metadata         ] [Force] [movie] update_mapping [modelresult] (dynamic)
