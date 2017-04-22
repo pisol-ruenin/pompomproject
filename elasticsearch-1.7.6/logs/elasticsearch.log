@@ -181,3 +181,8 @@ org.elasticsearch.index.shard.IllegalIndexShardStateException: [products_tutoria
 [2017-04-22 20:19:40,286][INFO ][http                     ] [Onyxx] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/10.80.9.227:9200]}
 [2017-04-22 20:19:40,286][INFO ][node                     ] [Onyxx] started
 [2017-04-22 20:19:40,385][INFO ][gateway                  ] [Onyxx] recovered [3] indices into cluster_state
+[2017-04-22 20:34:12,439][INFO ][bootstrap                ] running graceful exit on windows
+[2017-04-22 20:34:12,440][INFO ][node                     ] [Onyxx] stopping ...
+[2017-04-22 20:34:12,486][INFO ][node                     ] [Onyxx] stopped
+[2017-04-22 20:34:12,487][INFO ][node                     ] [Onyxx] closing ...
+[2017-04-22 20:34:12,538][INFO ][node                     ] [Onyxx] closed
