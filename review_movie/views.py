@@ -1,16 +1,14 @@
 from django.views.generic import DetailView, View, ListView
-from .models import Movie, UserProfile, Review
+from .models import Movie, UserProfile, Review, ReviewerRequest
 from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from .forms import UserForm
 from django.http import HttpResponseRedirect
-from django.core.paginator import Paginator, EmptyPage, PageNotAnInteger
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.urlresolvers import reverse_lazy, reverse
-
-# Create your views here.
+from haystack.generic_views import SearchView
 
 
 class IndexView(ListView):
@@ -33,6 +31,9 @@ class CreateReview(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
     raise_exception = True
     model = Review
     fields = ['topic', 'review', 'rating']
+
+    def get_success_url(self, *args, **kwargs):
+        return reverse('review_movie:calculate_rating', kwargs={'pk': self.kwargs['pk'], 'review_pk': self.object.pk})
 
     def dispatch(self, *args, **kwargs):
         try:
@@ -58,6 +59,9 @@ class UpdateReview(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):
     pk_url_kwarg = 'review_pk'
     fields = ['topic', 'review', 'rating']
 
+    def get_success_url(self, *args, **kwargs):
+        return reverse('review_movie:calculate_rating', kwargs={'pk': self.kwargs['pk'], 'review_pk': self.kwargs['review_pk']})
+
     def dispatch(self, *args, **kwargs):
         review = Review.objects.get(pk=self.kwargs['review_pk'])
         if self.request.user != review.reviewer:
@@ -71,8 +75,7 @@ class DeleteReview(PermissionRequiredMixin, LoginRequiredMixin, DeleteView):
     model = Review
 
     def get_success_url(self, *args, **kwargs):
-        print(self.kwargs)
-        return reverse('review_movie:movie', kwargs={'pk': self.kwargs['review_pk']})
+        return reverse('review_movie:calculate_rating_delete', kwargs={'pk': self.kwargs['review_pk']})
 
     def dispatch(self, *args, **kwargs):
         review = Review.objects.get(pk=self.kwargs['pk'])
@@ -110,16 +113,6 @@ class MovieView(DetailView):
             context['ck_review'] = True
         except:
             context['ck_review'] = False
-        movie = self.get_object()
-        context['rating'] = 0
-        for review in context['reviews']:
-            context['rating'] += review.rating
-        try:
-            context['rating'] /= len(context['reviews'])
-        except ZeroDivisionError:
-            context['rating'] = 0.0
-        movie.rating = context['rating']
-        movie.save()
         return context
 
 
@@ -158,3 +151,87 @@ class UserFormView(View):
                     login(request, user)
                     return redirect('review_movie:index')
         return render(request, self.template_name, {'form': form})
+
+
+class CalculateRatingDelete(PermissionRequiredMixin, UpdateView):
+    permission_required = ['review_movie.add_review',
+                           'review_movie.change_review', 'review_movie.delete_review']
+    model = Movie
+    raise_exception = True
+    template_name = "review_movie/calculate_rating.html"
+    fields = []
+
+    def dispatch(self, *args, **kwargs):
+        movie = self.get_object()
+        reviews = Review.objects.filter(movie=movie)
+        rating = 0
+        for review in reviews:
+            rating += review.rating
+            try:
+                rating /= len(reviews)
+            except ZeroDivisionError:
+                rating = 0.0
+        movie.rating = rating
+        movie.save()
+        return HttpResponseRedirect(reverse('review_movie:movie', kwargs={'pk': self.kwargs['pk']}))
+
+
+class CalculateRating(PermissionRequiredMixin, UpdateView):
+    permission_required = ['review_movie.add_review',
+                           'review_movie.change_review', 'review_movie.delete_review']
+    model = Movie
+    raise_exception = True
+    template_name = "review_movie/calculate_rating.html"
+    fields = []
+
+    def dispatch(self, *args, **kwargs):
+        movie = self.get_object()
+        reviews = Review.objects.filter(movie=movie)
+        rating = 0
+        for review in reviews:
+            rating += review.rating
+            try:
+                rating /= len(reviews)
+            except ZeroDivisionError:
+                rating = 0.0
+        movie.rating = rating
+        movie.save()
+        return HttpResponseRedirect(reverse('review_movie:review', kwargs={'pk': self.kwargs['pk'], 'review_pk': self.kwargs['review_pk']}))
+
+
+class ReviewerRequestSend(LoginRequiredMixin, CreateView):
+    template_name = 'review_movie/reviewer_request.html'
+    raise_exception = True
+    model = ReviewerRequest
+    fields = ['topic', 'request']
+
+    def form_valid(self, form):
+        user = self.request.user
+        form.instance.reviewer = user
+        return super(ReviewerRequest, self).form_valid(form)
+
+
+class ReviewerRequestView(LoginRequiredMixin, DetailView):
+    template_name = 'review_movie/reviewer_request_view.html'
+    model = ReviewerRequest
+    raise_exception = True
+
+
+class ReviewerRequestEdit(LoginRequiredMixin, UpdateView):
+    template_name = 'review_movie/reviewer_request.html'
+    model = ReviewerRequest
+    raise_exception = True
+    fields = ['topic', 'request']
+
+    def dispatch(self, *args, **kwargs):
+        pass
+
+
+class ReviewerRequestDelete(LoginRequiredMixin, DeleteView):
+    template_name = 'review_movie/reviewer_request.html'
+    model = ReviewerRequest
+    raise_exception = True
+
+
+class MovieSearchView(SearchView):
+    template_name = 'search/search.html'

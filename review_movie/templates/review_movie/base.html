@@ -46,13 +46,17 @@
         <li class="{% block nav_allmovie %}{% endblock %}" ><a href="{% url 'review_movie:all_movie' %}">Review</a></li>
 
     </ul>
-    <form class="navbar-form navbar-left">
+    {% if not "/review_movie/movie/search" in request.get_full_path %}
+    <form class="navbar-form navbar-left" action="{% url 'review_movie:search_movie' %}" method="get">
         <div class="form-group">
-          <input type="text" class="form-control form-search per80" placeholder="Search">
+          <input type="text" name='q' class="form-control form-search per80" placeholder="Search">
           <button type="submit" class="form-control form-search per20"><i class="fa fa-search"></i></button>
       </div>
-
   </form>
+  {% endif %}
+  {% if requet.user.groups.all.0 is None %}
+  <a href="{% url 'review_movie:reviewer_request_send' %}"><button class="btn" >อยากเป็นนักรีวิว</button></a>
+  {% endif %}
   <ul class="nav navbar-nav navbar-right">
     {% if request.user.is_authenticated %}
     <li class="dropdown">
@@ -71,7 +75,7 @@
         <li><a class="drop-text" href="{% url 'review_movie:logout' %}">Log out</a></li>
     </ul>
 </li>
-{% elif not request.user.is_authenticated and not "/review_movie/login" in request.get_full_path and not "/review_movie/register" in request.get_full_path%}
+{% elif not request.user.is_authenticated and not "/review_movie/login" in request.get_full_path and not "/review_movie/register" in request.get_full_path %}
 <li><a href="{% url 'review_movie:register' %}">Sign up</a></li>
 <li class="dropdown">
                      <a href="" class="dropdown-toggle" data-toggle="dropdown">Sign in <b class="caret"></b></a>
@@ -110,5 +114,9 @@
 </nav>
 {% block body %}
 {% endblock %}
+<br><br>
+<footer class="footfu">
+  <center>Copyright 2017 PomPom Project / computer science - CMU</center>
+</footer>
 </body>
 </html>
