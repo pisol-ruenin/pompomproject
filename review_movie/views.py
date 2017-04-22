@@ -211,16 +211,26 @@ class ReviewerRequestSend(LoginRequiredMixin, CreateView):
         return super(ReviewerRequest, self).form_valid(form)
 
 
-class ReviewerRequestView(DetailView):
-    pass
+class ReviewerRequestView(LoginRequiredMixin, DetailView):
+    template_name = 'review_movie/reviewer_request_view.html'
+    model = ReviewerRequest
+    raise_exception = True
 
 
-class ReviewerRequestEdit(UpdateView):
-    pass
+class ReviewerRequestEdit(LoginRequiredMixin, UpdateView):
+    template_name = 'review_movie/reviewer_request.html'
+    model = ReviewerRequest
+    raise_exception = True
+    fields = ['topic', 'request']
+
+    def dispatch(self, *args, **kwargs):
+        pass
 
 
-class ReviewerRequestDelete(DeleteView):
-    pass
+class ReviewerRequestDelete(LoginRequiredMixin, DeleteView):
+    template_name = 'review_movie/reviewer_request.html'
+    model = ReviewerRequest
+    raise_exception = True
 
 
 class MovieSearchView(SearchView):
