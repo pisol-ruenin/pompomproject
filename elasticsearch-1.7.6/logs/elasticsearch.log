@@ -1,3 +1,17 @@
+<<<<<<< HEAD
+[2017-04-22 20:24:13,035][INFO ][node                     ] [Big Wheel] version[1.7.6], pid[4393], build[c730b59/2016-11-18T15:21:16Z]
+[2017-04-22 20:24:13,035][INFO ][node                     ] [Big Wheel] initializing ...
+[2017-04-22 20:24:13,458][INFO ][plugins                  ] [Big Wheel] loaded [], sites []
+[2017-04-22 20:24:13,611][INFO ][env                      ] [Big Wheel] using [1] data paths, mounts [[/ (/dev/disk1)]], net usable_space [63.5gb], net total_space [111.8gb], types [hfs]
+[2017-04-22 20:24:26,431][INFO ][node                     ] [Big Wheel] initialized
+[2017-04-22 20:24:26,433][INFO ][node                     ] [Big Wheel] starting ...
+[2017-04-22 20:24:26,700][INFO ][transport                ] [Big Wheel] bound_address {inet[/0:0:0:0:0:0:0:0:9300]}, publish_address {inet[/10.80.86.32:9300]}
+[2017-04-22 20:24:26,761][INFO ][discovery                ] [Big Wheel] elasticsearch/XevJQLVrTCSYK-Eu5bFDsw
+[2017-04-22 20:24:30,572][INFO ][cluster.service          ] [Big Wheel] new_master [Big Wheel][XevJQLVrTCSYK-Eu5bFDsw][sawarintipwiangs-MacBook-Air.local][inet[/10.80.86.32:9300]], reason: zen-disco-join (elected_as_master)
+[2017-04-22 20:24:30,623][INFO ][http                     ] [Big Wheel] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/10.80.86.32:9200]}
+[2017-04-22 20:24:30,624][INFO ][node                     ] [Big Wheel] started
+[2017-04-22 20:24:30,665][INFO ][gateway                  ] [Big Wheel] recovered [0] indices into cluster_state
+=======
 [2017-04-22 01:11:35,942][INFO ][cluster.metadata         ] [Empathoid] [products_tutorial] creating index, cause [api], templates [], shards [5]/[1], mappings []
 [2017-04-22 01:11:36,290][INFO ][cluster.metadata         ] [Empathoid] [products_tutorial] create_mapping [modelresult]
 [2017-04-22 01:11:36,542][DEBUG][action.search.type       ] [Empathoid] All shards failed for phase: [query]
@@ -181,8 +195,12 @@ org.elasticsearch.index.shard.IllegalIndexShardStateException: [products_tutoria
 [2017-04-22 20:19:40,286][INFO ][http                     ] [Onyxx] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/10.80.9.227:9200]}
 [2017-04-22 20:19:40,286][INFO ][node                     ] [Onyxx] started
 [2017-04-22 20:19:40,385][INFO ][gateway                  ] [Onyxx] recovered [3] indices into cluster_state
+<<<<<<< HEAD
 [2017-04-22 20:34:12,439][INFO ][bootstrap                ] running graceful exit on windows
 [2017-04-22 20:34:12,440][INFO ][node                     ] [Onyxx] stopping ...
 [2017-04-22 20:34:12,486][INFO ][node                     ] [Onyxx] stopped
 [2017-04-22 20:34:12,487][INFO ][node                     ] [Onyxx] closing ...
 [2017-04-22 20:34:12,538][INFO ][node                     ] [Onyxx] closed
+=======
+>>>>>>> 333014bc3a62755363d84e30c8021a8c8052122c
+>>>>>>> origin/master
