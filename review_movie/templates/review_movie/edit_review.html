@@ -1,11 +1,13 @@
 {% extends 'review_movie/base.html' %}
 {% load static from staticfiles %}
 {% block body %}
-    <center><h1>Review</h1>
-    <div class="form-logre">
+<link rel="stylesheet" type="text/css" href="{% static 'review_movie/css/request_review.css' %}">
+    <center><h1 class="font" style="color: white">Review</h1>
+    <div class="text_box">
+    <div class="form-logre" style="color: white">
     <form method="post" action="">
         {% csrf_token %}
         {% include 'review_movie/form_template.html' %}
-        <button class="btn btn-default" type="submit">Submit</button>
-    <form></div>
+        <button class="btn btn-primary" type="submit">Submit</button>
+    <form></div></div></center>
 {% endblock %}
