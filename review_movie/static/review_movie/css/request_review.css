@@ -1,0 +1,9 @@
+.text_box
+    {width: 80%;
+}
+h1.font {
+    font-family: "Comic Sans MS", cursive, sans-serif;
+}
+label{float: left;
+margin: 5px;
+font-size: 20px;}

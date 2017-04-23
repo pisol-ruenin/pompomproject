@@ -23,7 +23,9 @@
     .per20{width: 20%;}
     .logo{width: 30px;
     height: 30px !important;}
-      </style>
+    .review_want{margin-top:5px;
+    }
+    </style>
 </head>
 <body>
     <nav class="navbar-default navbar-fixed-top">
@@ -55,7 +57,7 @@
   </form>
   {% endif %}
   {% if requet.user.groups.all.0 is None %}
-  <a href="{% url 'review_movie:reviewer_request_send' %}"><button class="btn" >อยากเป็นนักรีวิว</button></a>
+  <a href="{% url 'review_movie:reviewer_request_send' %}"><button class="btn btn-primary review_want" >อยากเป็นนักรีวิว</button></a>
   {% endif %}
   <ul class="nav navbar-nav navbar-right">
     {% if request.user.is_authenticated %}
