@@ -20,11 +20,6 @@ class IndexView(ListView):
         return movie[:3] if len(movie) >= 3 else movie
 
 
-class UpdateProfile(LoginRequiredMixin, UpdateView):
-    model = UserProfile
-    fields = ['firstname', 'lastname', 'nickname', 'profile_img', 'job']
-
-
 class CreateReview(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
     permission_required = 'review_movie.add_review'
     template_name = 'review_movie/add_review.html'
@@ -121,6 +116,23 @@ class ProfileView(LoginRequiredMixin, View):
 
     def get(self, request):
         return render(request, self.template_name)
+
+
+class UpdateProfile(LoginRequiredMixin, UpdateView):
+    template_name = 'review_movie/profile_update.html'
+    raise_exception = True
+    model = UserProfile
+    fields = ['nickname', 'profile_img', 'job']
+
+    def get_success_url(self, *args, **kwargs):
+        return reverse('review_movie:profile')
+
+    def dispatch(self, *args, **kwargs):
+        user_profile = UserProfile.objects.get(pk=self.request.user.pk)
+        if self.request.user.pk != user_profile.pk:
+            return HttpResponseRedirect(reverse('review_movie:profile'))
+        return super(UpdateProfile, self).dispatch(*args, **kwargs)
+
 
 
 class UserFormView(View):

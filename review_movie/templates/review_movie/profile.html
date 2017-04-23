@@ -139,8 +139,7 @@ $(document).ready(function() {
 
 <div class="panel-footer">
     <span class="pull-right">
-      <a href="#" class="btn btn-warning">เปลี่ยนรูปโปรไฟล์</a>
-      <a href="#" class="btn btn-warning">แก้ไขข้อมูล <i class="glyphicon glyphicon-edit"></i></a>
+      <a href="{% url 'review_movie:update_profile' request.user.pk %}" class="btn btn-warning">แก้ไขข้อมูล <i class="glyphicon glyphicon-edit"></i></a>
         <!-- <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a> -->
     </span><br><br>
 </div>
