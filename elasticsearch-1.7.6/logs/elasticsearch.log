@@ -861,3 +861,20 @@ Caused by: java.net.ConnectException: Connection timed out: no further informati
 	... 3 more
 [2017-04-23 02:04:30,957][INFO ][bootstrap                ] running graceful exit on windows
 [2017-04-23 02:04:30,959][INFO ][node                     ] [Bloodaxe] stopping ...
+[2017-04-23 19:05:56,289][INFO ][node                     ] [Man-Spider] version[1.7.6], pid[10368], build[c730b59/2016-11-18T15:21:16Z]
+[2017-04-23 19:05:56,289][INFO ][node                     ] [Man-Spider] initializing ...
+[2017-04-23 19:05:56,346][INFO ][plugins                  ] [Man-Spider] loaded [], sites []
+[2017-04-23 19:05:56,375][INFO ][env                      ] [Man-Spider] using [1] data paths, mounts [[(E:)]], net usable_space [60.9gb], net total_space [366.9gb], types [NTFS]
+[2017-04-23 19:05:58,939][INFO ][node                     ] [Man-Spider] initialized
+[2017-04-23 19:05:58,940][INFO ][node                     ] [Man-Spider] starting ...
+[2017-04-23 19:05:59,148][INFO ][transport                ] [Man-Spider] bound_address {inet[/0:0:0:0:0:0:0:0:9300]}, publish_address {inet[/10.80.143.4:9300]}
+[2017-04-23 19:05:59,394][INFO ][discovery                ] [Man-Spider] elasticsearch/vMierCFiTLiYqqxAhSWVQA
+[2017-04-23 19:06:03,200][INFO ][cluster.service          ] [Man-Spider] new_master [Man-Spider][vMierCFiTLiYqqxAhSWVQA][AdrenalineD][inet[/10.80.143.4:9300]], reason: zen-disco-join (elected_as_master)
+[2017-04-23 19:06:03,349][INFO ][http                     ] [Man-Spider] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/10.80.143.4:9200]}
+[2017-04-23 19:06:03,349][INFO ][node                     ] [Man-Spider] started
+[2017-04-23 19:06:03,481][INFO ][gateway                  ] [Man-Spider] recovered [1] indices into cluster_state
+[2017-04-23 19:06:05,750][INFO ][bootstrap                ] running graceful exit on windows
+[2017-04-23 19:06:05,751][INFO ][node                     ] [Man-Spider] stopping ...
+[2017-04-23 19:06:05,965][INFO ][node                     ] [Man-Spider] stopped
+[2017-04-23 19:06:05,965][INFO ][node                     ] [Man-Spider] closing ...
+[2017-04-23 19:06:05,968][INFO ][node                     ] [Man-Spider] closed
