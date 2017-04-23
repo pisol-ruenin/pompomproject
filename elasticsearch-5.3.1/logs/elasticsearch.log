@@ -1,0 +1,11 @@
+[2017-04-23T00:31:09,552][INFO ][o.e.c.r.a.DiskThresholdMonitor] [VPAr1-X] low disk watermark [85%] exceeded on [VPAr1-XDQjOJij7IAbqUzQ][VPAr1-X][/Users/kookkik/desktop/project/elasticsearch-5.3.1/data/nodes/0] free: 14.7gb[13.2%], replicas will not be assigned to this node
+[2017-04-23T00:31:39,688][INFO ][o.e.c.r.a.DiskThresholdMonitor] [VPAr1-X] low disk watermark [85%] exceeded on [VPAr1-XDQjOJij7IAbqUzQ][VPAr1-X][/Users/kookkik/desktop/project/elasticsearch-5.3.1/data/nodes/0] free: 15.8gb[14.1%], replicas will not be assigned to this node
+[2017-04-23T00:32:09,702][INFO ][o.e.c.r.a.DiskThresholdMonitor] [VPAr1-X] low disk watermark [85%] exceeded on [VPAr1-XDQjOJij7IAbqUzQ][VPAr1-X][/Users/kookkik/desktop/project/elasticsearch-5.3.1/data/nodes/0] free: 15.8gb[14.1%], replicas will not be assigned to this node
+[2017-04-23T00:32:39,712][INFO ][o.e.c.r.a.DiskThresholdMonitor] [VPAr1-X] low disk watermark [85%] exceeded on [VPAr1-XDQjOJij7IAbqUzQ][VPAr1-X][/Users/kookkik/desktop/project/elasticsearch-5.3.1/data/nodes/0] free: 15.8gb[14.1%], replicas will not be assigned to this node
+[2017-04-23T00:33:09,724][INFO ][o.e.c.r.a.DiskThresholdMonitor] [VPAr1-X] low disk watermark [85%] exceeded on [VPAr1-XDQjOJij7IAbqUzQ][VPAr1-X][/Users/kookkik/desktop/project/elasticsearch-5.3.1/data/nodes/0] free: 15.8gb[14.1%], replicas will not be assigned to this node
+[2017-04-23T00:33:39,737][INFO ][o.e.c.r.a.DiskThresholdMonitor] [VPAr1-X] low disk watermark [85%] exceeded on [VPAr1-XDQjOJij7IAbqUzQ][VPAr1-X][/Users/kookkik/desktop/project/elasticsearch-5.3.1/data/nodes/0] free: 15.8gb[14.1%], replicas will not be assigned to this node
+[2017-04-23T00:34:09,749][INFO ][o.e.c.r.a.DiskThresholdMonitor] [VPAr1-X] low disk watermark [85%] exceeded on [VPAr1-XDQjOJij7IAbqUzQ][VPAr1-X][/Users/kookkik/desktop/project/elasticsearch-5.3.1/data/nodes/0] free: 15.8gb[14.1%], replicas will not be assigned to this node
+[2017-04-23T00:34:26,005][INFO ][o.e.n.Node               ] [VPAr1-X] stopping ...
+[2017-04-23T00:34:26,059][INFO ][o.e.n.Node               ] [VPAr1-X] stopped
+[2017-04-23T00:34:26,060][INFO ][o.e.n.Node               ] [VPAr1-X] closing ...
+[2017-04-23T00:34:26,078][INFO ][o.e.n.Node               ] [VPAr1-X] closed
