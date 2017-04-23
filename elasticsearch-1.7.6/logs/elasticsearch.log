@@ -878,3 +878,99 @@ Caused by: java.net.ConnectException: Connection timed out: no further informati
 [2017-04-23 19:06:05,965][INFO ][node                     ] [Man-Spider] stopped
 [2017-04-23 19:06:05,965][INFO ][node                     ] [Man-Spider] closing ...
 [2017-04-23 19:06:05,968][INFO ][node                     ] [Man-Spider] closed
+[2017-04-23 21:40:28,419][INFO ][node                     ] [Tony Stark] version[1.7.6], pid[5956], build[c730b59/2016-11-18T15:21:16Z]
+[2017-04-23 21:40:28,450][INFO ][node                     ] [Tony Stark] initializing ...
+[2017-04-23 21:40:28,519][INFO ][plugins                  ] [Tony Stark] loaded [], sites []
+[2017-04-23 21:40:28,547][INFO ][env                      ] [Tony Stark] using [1] data paths, mounts [[(E:)]], net usable_space [60.9gb], net total_space [366.9gb], types [NTFS]
+[2017-04-23 21:40:30,497][INFO ][node                     ] [Tony Stark] initialized
+[2017-04-23 21:40:30,497][INFO ][node                     ] [Tony Stark] starting ...
+[2017-04-23 21:40:30,752][INFO ][transport                ] [Tony Stark] bound_address {inet[/0:0:0:0:0:0:0:0:9300]}, publish_address {inet[/10.80.143.4:9300]}
+[2017-04-23 21:40:30,983][INFO ][discovery                ] [Tony Stark] elasticsearch/NKIyT_fDR9Si3OZ7OH2ZCg
+[2017-04-23 21:40:34,783][INFO ][cluster.service          ] [Tony Stark] new_master [Tony Stark][NKIyT_fDR9Si3OZ7OH2ZCg][AdrenalineD][inet[/10.80.143.4:9300]], reason: zen-disco-join (elected_as_master)
+[2017-04-23 21:40:34,926][INFO ][http                     ] [Tony Stark] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/10.80.143.4:9200]}
+[2017-04-23 21:40:34,926][INFO ][node                     ] [Tony Stark] started
+[2017-04-23 21:40:35,088][INFO ][gateway                  ] [Tony Stark] recovered [1] indices into cluster_state
+[2017-04-23 21:59:19,317][INFO ][bootstrap                ] running graceful exit on windows
+[2017-04-23 21:59:19,318][INFO ][node                     ] [Tony Stark] stopping ...
+[2017-04-23 21:59:19,358][INFO ][node                     ] [Tony Stark] stopped
+[2017-04-23 21:59:19,358][INFO ][node                     ] [Tony Stark] closing ...
+[2017-04-23 21:59:19,361][INFO ][node                     ] [Tony Stark] closed
+[2017-04-23 22:09:05,815][INFO ][node                     ] [Baron Blood] version[1.7.6], pid[10020], build[c730b59/2016-11-18T15:21:16Z]
+[2017-04-23 22:09:05,816][INFO ][node                     ] [Baron Blood] initializing ...
+[2017-04-23 22:09:05,880][INFO ][plugins                  ] [Baron Blood] loaded [], sites []
+[2017-04-23 22:09:05,909][INFO ][env                      ] [Baron Blood] using [1] data paths, mounts [[(E:)]], net usable_space [60.9gb], net total_space [366.9gb], types [NTFS]
+[2017-04-23 22:09:07,843][INFO ][node                     ] [Baron Blood] initialized
+[2017-04-23 22:09:07,843][INFO ][node                     ] [Baron Blood] starting ...
+[2017-04-23 22:09:08,056][INFO ][transport                ] [Baron Blood] bound_address {inet[/0:0:0:0:0:0:0:0:9300]}, publish_address {inet[/10.80.143.4:9300]}
+[2017-04-23 22:09:08,290][INFO ][discovery                ] [Baron Blood] elasticsearch/GkVwJi42TBmuX-4QFNYiiA
+[2017-04-23 22:09:12,062][INFO ][cluster.service          ] [Baron Blood] new_master [Baron Blood][GkVwJi42TBmuX-4QFNYiiA][AdrenalineD][inet[/10.80.143.4:9300]], reason: zen-disco-join (elected_as_master)
+[2017-04-23 22:09:12,176][INFO ][http                     ] [Baron Blood] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/10.80.143.4:9200]}
+[2017-04-23 22:09:12,176][INFO ][node                     ] [Baron Blood] started
+[2017-04-23 22:09:12,186][INFO ][gateway                  ] [Baron Blood] recovered [1] indices into cluster_state
+[2017-04-23 22:09:12,223][DEBUG][action.search.type       ] [Baron Blood] All shards failed for phase: [query]
+org.elasticsearch.action.NoShardAvailableActionException: [movie][4] null
+	at org.elasticsearch.action.search.type.TransportSearchTypeAction$BaseAsyncAction.start(TransportSearchTypeAction.java:160)
+	at org.elasticsearch.action.search.type.TransportSearchQueryThenFetchAction.doExecute(TransportSearchQueryThenFetchAction.java:62)
+	at org.elasticsearch.action.search.type.TransportSearchQueryThenFetchAction.doExecute(TransportSearchQueryThenFetchAction.java:52)
+	at org.elasticsearch.action.support.TransportAction.execute(TransportAction.java:75)
+	at org.elasticsearch.action.search.TransportSearchAction.doExecute(TransportSearchAction.java:100)
+	at org.elasticsearch.action.search.TransportSearchAction.doExecute(TransportSearchAction.java:43)
+	at org.elasticsearch.action.support.TransportAction.execute(TransportAction.java:75)
+	at org.elasticsearch.client.node.NodeClient.execute(NodeClient.java:98)
+	at org.elasticsearch.client.FilterClient.execute(FilterClient.java:66)
+	at org.elasticsearch.rest.BaseRestHandler$HeadersAndContextCopyClient.execute(BaseRestHandler.java:92)
+	at org.elasticsearch.client.support.AbstractClient.search(AbstractClient.java:338)
+	at org.elasticsearch.rest.action.search.RestSearchAction.handleRequest(RestSearchAction.java:84)
+	at org.elasticsearch.rest.BaseRestHandler.handleRequest(BaseRestHandler.java:53)
+	at org.elasticsearch.rest.RestController.executeHandler(RestController.java:225)
+	at org.elasticsearch.rest.RestController.dispatchRequest(RestController.java:170)
+	at org.elasticsearch.http.HttpServer.internalDispatchRequest(HttpServer.java:121)
+	at org.elasticsearch.http.HttpServer$Dispatcher.dispatchRequest(HttpServer.java:83)
+	at org.elasticsearch.http.netty.NettyHttpServerTransport.dispatchRequest(NettyHttpServerTransport.java:327)
+	at org.elasticsearch.http.netty.HttpRequestHandler.messageReceived(HttpRequestHandler.java:63)
+	at org.elasticsearch.common.netty.channel.SimpleChannelUpstreamHandler.handleUpstream(SimpleChannelUpstreamHandler.java:70)
+	at org.elasticsearch.common.netty.channel.DefaultChannelPipeline.sendUpstream(DefaultChannelPipeline.java:564)
+	at org.elasticsearch.common.netty.channel.DefaultChannelPipeline$DefaultChannelHandlerContext.sendUpstream(DefaultChannelPipeline.java:791)
+	at org.elasticsearch.http.netty.pipelining.HttpPipeliningHandler.messageReceived(HttpPipeliningHandler.java:60)
+	at org.elasticsearch.common.netty.channel.SimpleChannelHandler.handleUpstream(SimpleChannelHandler.java:88)
+	at org.elasticsearch.common.netty.channel.DefaultChannelPipeline.sendUpstream(DefaultChannelPipeline.java:564)
+	at org.elasticsearch.common.netty.channel.DefaultChannelPipeline$DefaultChannelHandlerContext.sendUpstream(DefaultChannelPipeline.java:791)
+	at org.elasticsearch.common.netty.handler.codec.http.HttpChunkAggregator.messageReceived(HttpChunkAggregator.java:145)
+	at org.elasticsearch.common.netty.channel.SimpleChannelUpstreamHandler.handleUpstream(SimpleChannelUpstreamHandler.java:70)
+	at org.elasticsearch.common.netty.channel.DefaultChannelPipeline.sendUpstream(DefaultChannelPipeline.java:564)
+	at org.elasticsearch.common.netty.channel.DefaultChannelPipeline$DefaultChannelHandlerContext.sendUpstream(DefaultChannelPipeline.java:791)
+	at org.elasticsearch.common.netty.handler.codec.http.HttpContentDecoder.messageReceived(HttpContentDecoder.java:108)
+	at org.elasticsearch.common.netty.channel.SimpleChannelUpstreamHandler.handleUpstream(SimpleChannelUpstreamHandler.java:70)
+	at org.elasticsearch.common.netty.channel.DefaultChannelPipeline.sendUpstream(DefaultChannelPipeline.java:564)
+	at org.elasticsearch.common.netty.channel.DefaultChannelPipeline$DefaultChannelHandlerContext.sendUpstream(DefaultChannelPipeline.java:791)
+	at org.elasticsearch.common.netty.channel.Channels.fireMessageReceived(Channels.java:296)
+	at org.elasticsearch.common.netty.handler.codec.frame.FrameDecoder.unfoldAndFireMessageReceived(FrameDecoder.java:459)
+	at org.elasticsearch.common.netty.handler.codec.replay.ReplayingDecoder.callDecode(ReplayingDecoder.java:536)
+	at org.elasticsearch.common.netty.handler.codec.replay.ReplayingDecoder.messageReceived(ReplayingDecoder.java:435)
+	at org.elasticsearch.common.netty.channel.SimpleChannelUpstreamHandler.handleUpstream(SimpleChannelUpstreamHandler.java:70)
+	at org.elasticsearch.common.netty.channel.DefaultChannelPipeline.sendUpstream(DefaultChannelPipeline.java:564)
+	at org.elasticsearch.common.netty.channel.DefaultChannelPipeline$DefaultChannelHandlerContext.sendUpstream(DefaultChannelPipeline.java:791)
+	at org.elasticsearch.common.netty.OpenChannelsHandler.handleUpstream(OpenChannelsHandler.java:74)
+	at org.elasticsearch.common.netty.channel.DefaultChannelPipeline.sendUpstream(DefaultChannelPipeline.java:564)
+	at org.elasticsearch.common.netty.channel.DefaultChannelPipeline.sendUpstream(DefaultChannelPipeline.java:559)
+	at org.elasticsearch.common.netty.channel.Channels.fireMessageReceived(Channels.java:268)
+	at org.elasticsearch.common.netty.channel.Channels.fireMessageReceived(Channels.java:255)
+	at org.elasticsearch.common.netty.channel.socket.nio.NioWorker.read(NioWorker.java:88)
+	at org.elasticsearch.common.netty.channel.socket.nio.AbstractNioWorker.process(AbstractNioWorker.java:108)
+	at org.elasticsearch.common.netty.channel.socket.nio.AbstractNioSelector.run(AbstractNioSelector.java:337)
+	at org.elasticsearch.common.netty.channel.socket.nio.AbstractNioWorker.run(AbstractNioWorker.java:89)
+	at org.elasticsearch.common.netty.channel.socket.nio.NioWorker.run(NioWorker.java:178)
+	at org.elasticsearch.common.netty.util.ThreadRenamingRunnable.run(ThreadRenamingRunnable.java:108)
+	at org.elasticsearch.common.netty.util.internal.DeadLockProofWorker$1.run(DeadLockProofWorker.java:42)
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(Unknown Source)
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(Unknown Source)
+	at java.lang.Thread.run(Unknown Source)
+[2017-04-23 22:09:23,126][INFO ][cluster.metadata         ] [Baron Blood] [movie] deleting index
+[2017-04-23 22:09:23,292][INFO ][cluster.metadata         ] [Baron Blood] [movie] creating index, cause [api], templates [], shards [5]/[1], mappings []
+[2017-04-23 22:09:23,419][INFO ][cluster.metadata         ] [Baron Blood] [movie] create_mapping [modelresult]
+[2017-04-23 22:09:23,744][INFO ][cluster.metadata         ] [Baron Blood] [movie] update_mapping [modelresult] (dynamic)
+[2017-04-23 22:13:18,769][INFO ][bootstrap                ] running graceful exit on windows
+[2017-04-23 22:13:18,770][INFO ][node                     ] [Baron Blood] stopping ...
+[2017-04-23 22:13:19,110][INFO ][node                     ] [Baron Blood] stopped
+[2017-04-23 22:13:19,111][INFO ][node                     ] [Baron Blood] closing ...
+[2017-04-23 22:13:19,117][INFO ][node                     ] [Baron Blood] closed

@@ -26,9 +26,10 @@ class UserProfile(models.Model):
     user = models.OneToOneField(
         User, on_delete=models.CASCADE, primary_key=True)
     nickname = models.CharField(
-        max_length=50, default='Please define your name')
-    job = models.CharField(max_length=50)
-    profile_img = models.ImageField(default='default/defult_profile.png')
+        max_length=20, blank=True)
+    job = models.CharField(max_length=50, blank=True)
+    profile_img = models.ImageField(
+        default='default/defult_profile.png', blank=True)
     balance = models.FloatField(default=0)
 
     def __str__(self):
