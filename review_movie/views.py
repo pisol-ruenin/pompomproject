@@ -20,14 +20,11 @@ class IndexView(ListView):
         return movie[:3] if len(movie) >= 3 else movie
 
 
-<<<<<<< HEAD
 class UpdateProfile(LoginRequiredMixin, UpdateView):
     model = UserProfile
     fields = ['nickname', 'profile_img', 'job']
 
 
-=======
->>>>>>> a0574f71e1c43a236f9bf584c3a6ffa1c16faab5
 class CreateReview(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
     permission_required = 'review_movie.add_review'
     template_name = 'review_movie/add_review.html'
