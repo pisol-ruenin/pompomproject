@@ -242,7 +242,12 @@ img{width: 100%;}
           <ul style="list-style: none;">
           {% if reviews|length != 0 %}
           {% for review in reviews %}
-            <a href="{% url 'review_movie:review' movie.pk review.pk %}"><li class="liee"><img class="profile profile_small" src="{{ review.reviewer.userprofile.profile_img.url }}">{{ review.topic }}<br> โดย {{ review.reviewer.userprofile.nickname }}</li></a>
+            <a href="{% url 'review_movie:review' movie.pk review.pk %}"><li class="liee"><img class="profile profile_small" src="{{ review.reviewer.userprofile.profile_img.url }}">{{ review.topic }}<br> โดย {% if review.reviewer.userprofile.nickname == '' %}
+            {{ review.reviewer.username }}
+            {% else %}
+            {{ review.reviewer.userprofile.nickname }}
+            {% endif %}
+            </li></a>
           {% endfor %}
           {% else %}
             <h3>---Don't have review---</h3>
