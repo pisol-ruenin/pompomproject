@@ -30,7 +30,8 @@ class CreateReview(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
     template_name = 'review_movie/add_review.html'
     raise_exception = True
     model = Review
-    fields = ['topic', 'review', 'rating']
+    form_class = ReviewForm
+    # fields = ['topic', 'review', 'rating']
 
     def get_success_url(self, *args, **kwargs):
         return reverse('review_movie:calculate_rating', kwargs={'pk': self.kwargs['pk'], 'review_pk': self.object.pk})
