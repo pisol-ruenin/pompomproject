@@ -1,21 +1,66 @@
 {% extends 'review_movie/base.html' %}
 {% load static from staticfiles %}
 {% block body %}
+<meta charset="utf-8" name="viewport" content="width=device-width, initial-scale=1.0">
 <style type="text/css">
+.page-bg {
+  background: url('{% static 'review_movie/img/poster/logan 2.jpg' %}');
+  -webkit-filter: blur(15px);
+  -moz-filter: blur(15px);
+  -o-filter: blur(15px);
+  -ms-filter: blur(15px);
+  filter: blur(15px);
+  position: fixed;
+  background-size: 100%;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  z-index: -1;
+}
   form { display: inline-block; }
   h1{margin-top: 0px;}
   .btn-group{margin-top: 7px;}
   .fb-comments{width: 10px;}
   .panel{border-radius: 10px;
-  opacity: 0.9;}
+  opacity: 0.8;}
   .panel-body{border-radius: 10px !important;}*/
   .panel-default{border-radius: 10px;}
   .panel-heading{background-color: #000 !important;
+    color: #fff !important;
 border-top-left-radius: 10px;
 border-top-right-radius: 10px;}
+.poster{max-width: 100%;
+float: left;}
+@media (min-width:768px) {
+  .poster{max-width: 100px;
+  margin-right: 10px;}
+}
+.media_body{max-width: 100%!important;}
+h3{margin-top: 5px;}
+/*Profile Anothor*/
+.media
+    {
+        /*box-shadow:0px 0px 4px -2px #000;*/
+        margin: 20px 0;
+        padding:30px;
+    }
+    .dp
+    {
+        border:10px solid #eee;
+        transition: all 0.2s ease-in-out;
+    }
+    .dp:hover
+    {
+        border:2px solid #eee;
+        transform:rotate(360deg);
+        -ms-transform:rotate(360deg);
+        -webkit-transform:rotate(360deg);
+        /*-webkit-font-smoothing:antialiased;*/
+    }
 </style>
 <!-- ddddddd -->
-
+<div class="page-bg"></div>
 <div id="fb-root"></div>
 <script>(function(d, s, id) {
   var js, fjs = d.getElementsByTagName(s)[0];
@@ -27,7 +72,10 @@ border-top-right-radius: 10px;}
 <br><br><br><div class="container">
     <div class="panel panel-default">
         <div class="panel-heading">
-          <h1 style="float:left; color: white; text-shadow: 2px 1px 8px black">{{ review.topic }}</h1>
+          <img class="poster"src="{% static 'review_movie/img/poster/logan 2.jpg' %}"></img>
+          <div style="float:left;"><h1 style="color: white">{{ review.topic }}</h1>
+Date 23 September 2016
+<h3>Score = {{ review.rating }} / 10</h3><br></div>
             <div class="btn-group" style="float:right;">
             {% if request.user == review.reviewer or request.user.is_superuser %}
               <a href="{% url 'review_movie:update_review' review.movie.pk review.pk %}">
@@ -40,12 +88,28 @@ border-top-right-radius: 10px;}
             </div>
             <div class="clearfix"></div>
         </div>
-        <div class="panel-body" style="background-color: #FEFCD5" >
-                Score = {{ review.rating }} / 10
+        <div class="panel-body" style="background-color: #f1f0e6" >
                 <div class="media-body">
                 <p>{{ review.review|safe }}</p>
                 <div class="clearfix"></div>
-                <div class="fb-comments" data-href="http://127.0.0.1:8000/review_movie/" data-numposts="5"></div>
+
+                <div class="row">
+
+
+
+        <div class="media">
+            <a class="pull-left" href="#">
+                <img class="media-object dp img-circle" src="{%static 'review_movie/img/profile-kong.png' %}" style="width: 100px;height:100px;">
+            </a>
+            <div class="media-body">
+                <h4 class="media-heading">Anothor</h4>
+                "ผมรักหนังมาก เช่นเดียวกับที่รัก R2D2"
+                <span class="label label-info">Reviewer</span>
+            </div>
+        </div>
+    </div>
+
+                <!-- <div class="fb-comments" data-href="http://127.0.0.1:8000/review_movie/" data-numposts="5"></div> -->
               </div>
                 <!-- <div class="btn-group" role="group" id="BegeniButonlari">
                     <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span></button>

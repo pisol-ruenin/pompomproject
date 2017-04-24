@@ -8,7 +8,13 @@
 {% for field in form %}
     <div>
         <div>
-            {{ field.errors }}
+            {% if field.errors %}
+            <div class="alert alert-danger">
+<strong>{{ field.errors }}</strong>
+</div>
+
+            {% endif %}
+            <!-- ใส่อเลิท -->
         </div>
 
         <p>
