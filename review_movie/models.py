@@ -2,8 +2,13 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.core.validators import MaxValueValidator, MinValueValidator
+from ckeditor.fields import RichTextField
 
-# Create your models here.
+boolean_choices = (
+    (True, "Confirm"),
+    (False, "Not Confirm"),
+    (None, "Process")
+)
 
 
 class Movie(models.Model):
@@ -39,8 +44,8 @@ class UserProfile(models.Model):
 class Review(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     topic = models.CharField(max_length=50)
-    review = models.TextField(max_length=8000)
-    rating = models.IntegerField(
+    review = RichTextField(max_length=8000)
+    rating = models.FloatField(
         validators=[MaxValueValidator(10), MinValueValidator(0)])
     reviewer = models.ForeignKey(User, null=True)
     review_date = models.DateField(auto_now_add=True)
@@ -58,7 +63,8 @@ class ReviewerRequest(models.Model):
     topic = models.CharField(max_length=50)
     request = models.TextField(max_length=5000)
     request_date = models.DateField(auto_now_add=True)
-    confirm = models.BooleanField(default=False)
+    confirm = models.NullBooleanField(
+        choices=boolean_choices, blank=True, null=True)
 
     def get_absolute_url(self):
         return reverse('review_movie:request_view', kwargs={'pk': self.movie.pk, 'review_pk': self.pk})

@@ -8,6 +8,7 @@
     <form method="post" action="">
         {% csrf_token %}
         {% include 'review_movie/form_template.html' %}
+        {{ form.media }}
         <button class="btn btn-primary" type="submit">Submit</button>
     <form></div></div></center>
 {% endblock %}

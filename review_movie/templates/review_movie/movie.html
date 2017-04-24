@@ -219,7 +219,7 @@ img{width: 100%;}
               {% if ck_review is True %}
               <button class="btn btn-warning" disabled="disabled">Already Review</button>
               {% else %}
-              <a href="{% url 'review_movie:add_review' movie.pk %}"><button class="btn btn-warning">Write Review</button></a>
+              <a href="{% url 'review_movie:add_review' movie.pk %}"><button style="width:100%" class="btn btn-warning">Write Review</button></a>
               {% endif %}
             {% endif %}
 						<span class="review-no">{{ reviews|length }} reviews</span><br>

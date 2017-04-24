@@ -1,6 +1,9 @@
 from django.contrib.auth.models import User
 from .models import Review
 from django import forms
+from django.core.urlresolvers import reverse
+from ckeditor.widgets import CKEditorWidget
+
 
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
@@ -18,3 +21,9 @@ class UserForm(forms.ModelForm):
             msg = "password doesn't match"
             self.add_error('confirm_password', msg)
         return cleaned_data
+
+class ReviewForm(forms.ModelForm):
+    #review=forms.CharField(widget=CKEditorWidget())
+    class Meta:
+        model = Review
+        fields =['topic','review','rating']
