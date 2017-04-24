@@ -35,6 +35,7 @@ class UserProfile(models.Model):
     job = models.CharField(max_length=50, blank=True)
     profile_img = models.ImageField(
         default='default/defult_profile.png', blank=True)
+    description = models.TextField(max_length=150, blank=True)
     balance = models.FloatField(default=0)
 
     def __str__(self):
@@ -70,4 +71,4 @@ class ReviewerRequest(models.Model):
         return reverse('review_movie:request_view', kwargs={'pk': self.movie.pk, 'review_pk': self.pk})
 
     def __str__(self):
-        return self.topic + ' ' + str(self.user)
+        return self.topic + ' by ' + str(self.user)
