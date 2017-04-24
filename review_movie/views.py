@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .forms import UserForm
+from .forms import UserForm,ReviewForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.urlresolvers import reverse_lazy, reverse
@@ -55,9 +55,10 @@ class UpdateReview(PermissionRequiredMixin, LoginRequiredMixin, UpdateView):
     permission_required = 'review_movie.change_review'
     template_name = 'review_movie/edit_review.html'
     raise_exception = True
+    form_class = ReviewForm
     model = Review
     pk_url_kwarg = 'review_pk'
-    fields = ['topic', 'review', 'rating']
+    #fields = ['topic', 'review', 'rating']
 
     def get_success_url(self, *args, **kwargs):
         return reverse('review_movie:calculate_rating', kwargs={'pk': self.kwargs['pk'], 'review_pk': self.kwargs['review_pk']})

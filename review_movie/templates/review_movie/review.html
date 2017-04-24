@@ -6,10 +6,11 @@
   h1{margin-top: 0px;}
   .btn-group{margin-top: 7px;}
   .fb-comments{width: 10px;}
-  .panel{border-radius: 10px;}
+  .panel{border-radius: 10px;
+  opacity: 0.9;}
   .panel-body{border-radius: 10px !important;}*/
   .panel-default{border-radius: 10px;}
-  .panel-heading{background-color: #297ca5 !important;
+  .panel-heading{background-color: #000 !important;
 border-top-left-radius: 10px;
 border-top-right-radius: 10px;}
 </style>
@@ -42,7 +43,7 @@ border-top-right-radius: 10px;}
         <div class="panel-body" style="background-color: #FEFCD5" >
                 Score = {{ review.rating }} / 10
                 <div class="media-body">
-                <p>{{ review.review }}</p>
+                <p>{{ review.review|safe }}</p>
                 <div class="clearfix"></div>
                 <div class="fb-comments" data-href="http://127.0.0.1:8000/review_movie/" data-numposts="5"></div>
               </div>

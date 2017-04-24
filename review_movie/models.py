@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.core.validators import MaxValueValidator, MinValueValidator
+from ckeditor.fields import RichTextField
 
 boolean_choices = (
     (True, "Confirm"),
@@ -43,8 +44,8 @@ class UserProfile(models.Model):
 class Review(models.Model):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     topic = models.CharField(max_length=50)
-    review = models.TextField(max_length=8000)
-    rating = models.IntegerField(
+    review = RichTextField(max_length=8000)
+    rating = models.FloatField(
         validators=[MaxValueValidator(10), MinValueValidator(0)])
     reviewer = models.ForeignKey(User, null=True)
     review_date = models.DateField(auto_now_add=True)
