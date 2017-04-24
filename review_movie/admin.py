@@ -1,6 +1,7 @@
 from django.contrib import admin
 from .models import Movie, Review, UserProfile, ReviewerRequest
 from django.forms import Textarea, TextInput
+from .forms import UserForm
 from django.db import models
 
 # Register your models here.

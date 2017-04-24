@@ -22,7 +22,7 @@ class IndexView(ListView):
 
 class UpdateProfile(LoginRequiredMixin, UpdateView):
     model = UserProfile
-    fields = ['firstname', 'lastname', 'nickname', 'profile_img', 'job']
+    fields = ['nickname', 'profile_img', 'job']
 
 
 class CreateReview(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
@@ -123,6 +123,22 @@ class ProfileView(LoginRequiredMixin, View):
         return render(request, self.template_name)
 
 
+class UpdateProfile(LoginRequiredMixin, UpdateView):
+    template_name = 'review_movie/profile_update.html'
+    raise_exception = True
+    model = UserProfile
+    fields = ['nickname', 'profile_img', 'job']
+
+    def get_success_url(self, *args, **kwargs):
+        return reverse('review_movie:profile')
+
+    def dispatch(self, *args, **kwargs):
+        user_profile = UserProfile.objects.get(pk=self.request.user.pk)
+        if self.request.user.pk != user_profile.pk:
+            return HttpResponseRedirect(reverse('review_movie:profile'))
+        return super(UpdateProfile, self).dispatch(*args, **kwargs)
+
+
 class UserFormView(View):
     form_class = UserForm
     template_name = 'review_movie/register.html'
@@ -205,16 +221,39 @@ class ReviewerRequestSend(LoginRequiredMixin, CreateView):
     model = ReviewerRequest
     fields = ['topic', 'request']
 
+    def get_success_url(self, *args, **kwargs):
+        return reverse('review_movie:reviewer_request')
+
+    def dispatch(self, *args, **kwargs):
+        try:
+            requested = ReviewerRequest.objects.get(user=self.request.user)
+        except:
+            return super(ReviewerRequestSend, self).dispatch(*args, **kwargs)
+        if self.request.user == requested.user:
+            return redirect('review_movie:reviewer_request')
+
     def form_valid(self, form):
         user = self.request.user
-        form.instance.reviewer = user
-        return super(ReviewerRequest, self).form_valid(form)
+        form.instance.user = user
+        form.instance.confirm = None
+        return super(ReviewerRequestSend, self).form_valid(form)
 
 
-class ReviewerRequestView(LoginRequiredMixin, DetailView):
+class ReviewerRequestView(LoginRequiredMixin, ListView):
     template_name = 'review_movie/reviewer_request_view.html'
-    model = ReviewerRequest
     raise_exception = True
+    context_object_name = "reviewer_request"
+
+    def get_queryset(self):
+        reviewer_request = ReviewerRequest.objects.get(user=self.request.user)
+        return reviewer_request
+
+    def dispatch(self, *args, **kwargs):
+        try:
+            requested = ReviewerRequest.objects.get(user=self.request.user)
+        except:
+            return redirect('review_movie:index')
+        return super(ReviewerRequestView, self).dispatch(*args, **kwargs)
 
 
 class ReviewerRequestEdit(LoginRequiredMixin, UpdateView):
@@ -223,14 +262,20 @@ class ReviewerRequestEdit(LoginRequiredMixin, UpdateView):
     raise_exception = True
     fields = ['topic', 'request']
 
+    def get_success_url(self):
+        return reverse('review_movie:reviewer_request')
+
     def dispatch(self, *args, **kwargs):
-        pass
+        reviewer_request = ReviewerRequest.objects.get(user=self.request.user)
+        if reviewer_request.confirm is True:
+            return redirect('review_movie:reviewer_request')
+        elif self.request.user != reviewer_request.user:
+            return redirect('review_movie:index')
+        return super(ReviewerRequestEdit, self).dispatch(*args, **kwargs)
 
-
-class ReviewerRequestDelete(LoginRequiredMixin, DeleteView):
-    template_name = 'review_movie/reviewer_request.html'
-    model = ReviewerRequest
-    raise_exception = True
+    def form_valid(self, form):
+        form.instance.confirm = None
+        return super(ReviewerRequestEdit, self).form_valid(form)
 
 
 class MovieSearchView(SearchView):

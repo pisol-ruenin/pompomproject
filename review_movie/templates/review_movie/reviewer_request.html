@@ -1,19 +1,10 @@
 {% extends 'review_movie/base.html' %}
 {% load static from staticfiles %}
 {% block body %}
+<link rel="stylesheet" type="text/css" href="{% static 'review_movie/css/request_review.css' %}">
 
-<style type="text/css">
-.text_box
-    {width: 80%;
-}
-h1.font {
-    font-family: "Comic Sans MS", cursive, sans-serif;
-}
-
-    </style>
-}
 <center><div class="text_box" >
-    <center><h1 class="font" style="color: white" >Request</h1>
+    <h1 class="font" style="color: white" >Request</h1>
     <div class="form-logre" style="color: white">
     <form method="post" action="">
         {% csrf_token %}

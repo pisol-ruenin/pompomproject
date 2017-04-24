@@ -6,8 +6,12 @@
   h1{margin-top: 0px;}
   .btn-group{margin-top: 7px;}
   .fb-comments{width: 10px;}
-  .panel-default{border-radius: 0px;}
-  .panel-heading{background-color: #297ca5 !important;}
+  .panel{border-radius: 10px;}
+  .panel-body{border-radius: 10px !important;}*/
+  .panel-default{border-radius: 10px;}
+  .panel-heading{background-color: #297ca5 !important;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;}
 </style>
 <!-- ddddddd -->
 
@@ -35,12 +39,13 @@
             </div>
             <div class="clearfix"></div>
         </div>
-        <div class="panel-body" style="background-color: #FEFCD5>
+        <div class="panel-body" style="background-color: #FEFCD5" >
                 Score = {{ review.rating }} / 10
                 <div class="media-body">
                 <p>{{ review.review }}</p>
                 <div class="clearfix"></div>
                 <div class="fb-comments" data-href="http://127.0.0.1:8000/review_movie/" data-numposts="5"></div>
+              </div>
                 <!-- <div class="btn-group" role="group" id="BegeniButonlari">
                     <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-up"></span></button>
                     <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-thumbs-down"></span></button>

@@ -1,0 +1,20 @@
+[2017-04-24 14:51:22,102][INFO ][node                     ] [Eternal Brain] version[1.7.6], pid[2184], build[c730b59/2016-11-18T15:21:16Z]
+[2017-04-24 14:51:22,103][INFO ][node                     ] [Eternal Brain] initializing ...
+[2017-04-24 14:51:22,193][INFO ][plugins                  ] [Eternal Brain] loaded [], sites []
+[2017-04-24 14:51:22,403][INFO ][env                      ] [Eternal Brain] using [1] data paths, mounts [[(E:)]], net usable_space [60.8gb], net total_space [366.9gb], types [NTFS]
+[2017-04-24 14:51:25,245][INFO ][node                     ] [Eternal Brain] initialized
+[2017-04-24 14:51:25,245][INFO ][node                     ] [Eternal Brain] starting ...
+[2017-04-24 14:51:25,947][INFO ][transport                ] [Eternal Brain] bound_address {inet[/0:0:0:0:0:0:0:0:9300]}, publish_address {inet[/10.80.143.4:9300]}
+[2017-04-24 14:51:26,304][INFO ][discovery                ] [Eternal Brain] elasticsearch/U8riVjchQpqUZ1AofB5qrA
+[2017-04-24 14:51:30,074][INFO ][cluster.service          ] [Eternal Brain] new_master [Eternal Brain][U8riVjchQpqUZ1AofB5qrA][AdrenalineD][inet[/10.80.143.4:9300]], reason: zen-disco-join (elected_as_master)
+[2017-04-24 14:51:30,167][INFO ][http                     ] [Eternal Brain] bound_address {inet[/0:0:0:0:0:0:0:0:9200]}, publish_address {inet[/10.80.143.4:9200]}
+[2017-04-24 14:51:30,167][INFO ][node                     ] [Eternal Brain] started
+[2017-04-24 14:51:30,185][INFO ][gateway                  ] [Eternal Brain] recovered [0] indices into cluster_state
+[2017-04-24 14:52:05,584][INFO ][cluster.metadata         ] [Eternal Brain] [movie] creating index, cause [api], templates [], shards [5]/[1], mappings []
+[2017-04-24 14:52:05,907][INFO ][cluster.metadata         ] [Eternal Brain] [movie] create_mapping [modelresult]
+[2017-04-24 14:52:06,395][INFO ][cluster.metadata         ] [Eternal Brain] [movie] update_mapping [modelresult] (dynamic)
+[2017-04-24 14:57:34,610][INFO ][bootstrap                ] running graceful exit on windows
+[2017-04-24 14:57:34,610][INFO ][node                     ] [Eternal Brain] stopping ...
+[2017-04-24 14:57:34,953][INFO ][node                     ] [Eternal Brain] stopped
+[2017-04-24 14:57:34,954][INFO ][node                     ] [Eternal Brain] closing ...
+[2017-04-24 14:57:34,959][INFO ][node                     ] [Eternal Brain] closed
