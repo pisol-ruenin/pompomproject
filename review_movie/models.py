@@ -3,7 +3,11 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.core.validators import MaxValueValidator, MinValueValidator
 
-# Create your models here.
+boolean_choices = (
+    (True, "Confirm"),
+    (False, "Not Confirm"),
+    (None, "Process")
+)
 
 
 class Movie(models.Model):
@@ -58,7 +62,8 @@ class ReviewerRequest(models.Model):
     topic = models.CharField(max_length=50)
     request = models.TextField(max_length=5000)
     request_date = models.DateField(auto_now_add=True)
-    confirm = models.BooleanField(default=False)
+    confirm = models.NullBooleanField(
+        choices=boolean_choices, blank=True, null=True)
 
     def get_absolute_url(self):
         return reverse('review_movie:request_view', kwargs={'pk': self.movie.pk, 'review_pk': self.pk})

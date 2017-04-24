@@ -235,6 +235,7 @@ class ReviewerRequestSend(LoginRequiredMixin, CreateView):
     def form_valid(self, form):
         user = self.request.user
         form.instance.user = user
+        form.instance.confirm = None
         return super(ReviewerRequestSend, self).form_valid(form)
 
 
@@ -246,6 +247,13 @@ class ReviewerRequestView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         reviewer_request = ReviewerRequest.objects.get(user=self.request.user)
         return reviewer_request
+
+    def dispatch(self, *args, **kwargs):
+        try:
+            requested = ReviewerRequest.objects.get(user=self.request.user)
+        except:
+            return redirect('review_movie:index')
+        return super(ReviewerRequestView, self).dispatch(*args, **kwargs)
 
 
 class ReviewerRequestEdit(LoginRequiredMixin, UpdateView):
@@ -259,9 +267,15 @@ class ReviewerRequestEdit(LoginRequiredMixin, UpdateView):
 
     def dispatch(self, *args, **kwargs):
         reviewer_request = ReviewerRequest.objects.get(user=self.request.user)
-        if self.request.user != reviewer_request.user:
+        if reviewer_request.confirm is True:
+            return redirect('review_movie:reviewer_request')
+        elif self.request.user != reviewer_request.user:
             return redirect('review_movie:index')
         return super(ReviewerRequestEdit, self).dispatch(*args, **kwargs)
+
+    def form_valid(self, form):
+        form.instance.confirm = None
+        return super(ReviewerRequestEdit, self).form_valid(form)
 
 
 class MovieSearchView(SearchView):

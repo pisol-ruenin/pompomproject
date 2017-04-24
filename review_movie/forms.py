@@ -2,6 +2,7 @@ from django.contrib.auth.models import User
 from .models import Review
 from django import forms
 
+
 class UserForm(forms.ModelForm):
     password = forms.CharField(widget=forms.PasswordInput)
     confirm_password = forms.CharField(widget=forms.PasswordInput)
