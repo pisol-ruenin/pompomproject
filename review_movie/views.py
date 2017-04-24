@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.models import User
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
-from .forms import UserForm,ReviewForm
+from .forms import UserForm, ReviewForm
 from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.urlresolvers import reverse_lazy, reverse
@@ -18,11 +18,6 @@ class IndexView(ListView):
     def get_queryset(self):
         movie = Movie.objects.all()[::-1]
         return movie[:3] if len(movie) >= 3 else movie
-
-
-class UpdateProfile(LoginRequiredMixin, UpdateView):
-    model = UserProfile
-    fields = ['nickname', 'profile_img', 'job']
 
 
 class CreateReview(PermissionRequiredMixin, LoginRequiredMixin, CreateView):
@@ -129,7 +124,7 @@ class UpdateProfile(LoginRequiredMixin, UpdateView):
     template_name = 'review_movie/profile_update.html'
     raise_exception = True
     model = UserProfile
-    fields = ['nickname', 'profile_img', 'job']
+    fields = ['nickname', 'profile_img', 'job', 'description']
 
     def get_success_url(self, *args, **kwargs):
         return reverse('review_movie:profile')
