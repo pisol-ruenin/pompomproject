@@ -20,7 +20,7 @@ urlpatterns = [
     url(r'^movie/(?P<pk>[0-9]+)/add_review/$',
         views.CreateReview.as_view(), name='add_review'),
     url(r'^movie/(?P<pk>[0-9]+)/review/(?P<review_pk>[0-9]+)/$',
-        views.ReviewView.as_view(), name='review'),
+        views.ReviewlView.as_view(), name='review'),
     url(r'^movie/(?P<pk>[0-9]+)/review/(?P<review_pk>[0-9]+)/update/$',
         views.UpdateReview.as_view(), name='update_review'),
     url(r'^movie/(?P<pk>[0-9]+)/review/(?P<review_pk>[0-9]+)/delete/$',
@@ -36,4 +36,6 @@ urlpatterns = [
         name='reviewer_request'),
     url(r'^reviewer_request/(?P<pk>[0-9]+)/update/$', views.ReviewerRequestEdit.as_view(),
         name='reviewer_request_update'),
+    url(r'^profile/(?P<pk>[0-9]+)/update_balance/$',
+        views.UpdateBalance.as_view(), name='update_balance'),
 ]

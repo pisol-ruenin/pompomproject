@@ -9,6 +9,7 @@ from django.http import HttpResponseRedirect
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.core.urlresolvers import reverse_lazy, reverse
 from haystack.generic_views import SearchView
+from hitcount.views import HitCountDetailView, HitCountMixin
 
 
 class IndexView(ListView):
@@ -91,10 +92,16 @@ class AllMovieView(ListView):
         return movie
 
 
-class ReviewView(DetailView):
+class ReviewlView(HitCountDetailView):
     model = Review
     template_name = 'review_movie/review.html'
     pk_url_kwarg = 'review_pk'
+    count_hit = True
+
+    def dispatch(self, *args, **kwargs):
+        review = self.get_object()
+        print(review.hit_count.hits)
+        return super(ReviewlView, self).dispatch(*args, **kwargs)
 
 
 class MovieView(DetailView):
@@ -277,3 +284,21 @@ class ReviewerRequestEdit(LoginRequiredMixin, UpdateView):
 
 class MovieSearchView(SearchView):
     template_name = 'search/search.html'
+
+
+class UpdateBalance(LoginRequiredMixin, UpdateView):
+    model = User
+    raise_exception = True
+    template_name = "review_movie/update_balance.html"
+    fields = []
+
+    def dispatch(self, *args, **kwargs):
+        user = self.get_object()
+        my_review = Review.objects.filter(reviewer=self.request.user)
+        balance = 0
+        for review in my_review:
+            balance += review.hit_count.hits
+        balance *= 0.01
+        user.userprofile.balance = balance
+        user.userprofile.save()
+        return redirect('review_movie:profile')

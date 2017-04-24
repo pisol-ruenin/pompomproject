@@ -15,7 +15,6 @@ import os
 LOGIN_URL = 'review_movie:login'
 LOGIN_REDIRECT_URL = 'review_movie:index'
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 9
-# CKEDITOR_JQUERY_URL = 'https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js'
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
@@ -39,6 +38,7 @@ INSTALLED_APPS = [
     'mathfilters',
     'haystack',
     'ckeditor',
+    'hitcount',
     'review_movie.apps.ReviewMovieConfig',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -52,9 +52,10 @@ CKEDITOR_CONFIGS = {
     'default': {
         'toolbar': 'Custom',
         'toolbar_Custom': [
-            ['TextColor','BGColor'],
+            ['TextColor', 'BGColor'],
             ['Bold', 'Italic', 'Underline'],
-            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-',
+                'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
             ['Link', 'Unlink'],
             ['RemoveFormat', 'Source']
         ]
