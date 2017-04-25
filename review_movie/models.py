@@ -14,7 +14,7 @@ boolean_choices = (
 
 class Movie(models.Model):
     name = models.CharField(max_length=100)
-    synopsis = models.TextField(max_length=1000)
+    synopsis = RichTextField(max_length=1000)
     released_date = models.DateField()
     genre = models.CharField(max_length=250)
     director = models.CharField(max_length=100)
@@ -46,7 +46,7 @@ class UserProfile(models.Model):
 class Review(models.Model, HitCountMixin):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     topic = models.CharField(max_length=50)
-    review = RichTextField(max_length=8000)
+    review = RichTextField(max_length=10000)
     rating = models.FloatField(
         validators=[MaxValueValidator(10), MinValueValidator(0)])
     reviewer = models.ForeignKey(User, null=True)

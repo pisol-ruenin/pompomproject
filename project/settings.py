@@ -15,6 +15,7 @@ import os
 LOGIN_URL = 'review_movie:login'
 LOGIN_REDIRECT_URL = 'review_movie:index'
 HAYSTACK_SEARCH_RESULTS_PER_PAGE = 9
+TIME_ZONE = 'Asia/Bangkok'
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 

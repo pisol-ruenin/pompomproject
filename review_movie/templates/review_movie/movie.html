@@ -232,7 +232,7 @@ img{width: 100%;}
             <p><b>Released date</b> {{ movie.released_date }}</p>
             <p><b>Synopsis</b></p>
             <p class="product-description">
-            {{ movie.synopsis }}
+            {{ movie.synopsis|safe }}
             </p>
             <p><h3>Rating : {{ movie.rating|floatformat:1 }} / 10.0</h3></p>
 					</div>

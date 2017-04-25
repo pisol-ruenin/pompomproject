@@ -1,0 +1,134 @@
+{% extends 'review_movie/base.html'%}
+{% block title %}Profile : {{ profile.username }} {% endblock %}
+{% block body %}
+<script type="text/javascript">
+$(document).ready(function() {
+    var panels = $('.user-infos');
+    var panelsButton = $('.dropdown-user');
+    panels.hide();
+
+    //Click dropdown
+    panelsButton.click(function() {
+        //get data-for attribute
+        var dataFor = $(this).attr('data-for');
+        var idFor = $(dataFor);
+
+        //current button
+        var currentButton = $(this);
+        idFor.slideToggle(400, function() {
+            //Completed slidetoggle
+            if(idFor.is(':visible'))
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-up text-muted"></i>');
+            }
+            else
+            {
+                currentButton.html('<i class="glyphicon glyphicon-chevron-down text-muted"></i>');
+            }
+        })
+    });
+
+
+    $('[data-toggle="tooltip"]').tooltip();
+
+    // $('button').click(function(e) {
+    //     e.preventDefault();
+    //     alert("This is a demo.\n :-)");
+    // });
+});</script>
+<style type="text/css">
+.user-row {
+    margin-bottom: 14px;
+}
+.user-row:last-child {
+    margin-bottom: 0;
+}
+.dropdown-user {
+    margin: 13px 0;
+    padding: 5px;
+    height: 100%;
+}
+.dropdown-user:hover {
+    cursor: pointer;
+}
+.table-user-information > tbody > tr {
+    border-top: 1px solid rgb(221, 221, 221);
+}
+.table-user-information > tbody > tr:first-child {
+    border-top: 0;
+}
+.table-user-information > tbody > tr > td {
+    border-top: 0;
+}
+.toppad
+{margin-top:20px;
+}
+.btn-primary{margin-bottom: 5px;}
+.panel-info{width: 700px;}
+@media (max-width:900px){
+  .panel-info{width: 90%;}
+}
+.panel-heading{color: #ffffff !important;
+    background-color: #ecad53 !important;
+    border-color: rgba(0, 0, 0, 0) !important;
+    border-top-right-radius: 7px ;
+    border-top-left-radius: 7px;
+}
+.panel-body{
+  background-color: #ebeef9;
+}
+.panel{border-radius: 10px ;
+}
+.panel-info{border-color: #4a5469 !important}
+.panel-footer{background-color: #6e7b9e;}
+</style>
+<br><br>
+<center>
+<div class="panel panel-info">
+<div class="panel-heading">
+<h2 class="panel-title">Profile</h2>
+</div>
+<div class="panel-body">
+<div class="row">
+<div class="col-md-3 col-lg-3 " align="center"> <img alt="User Pic" src="{{ profile.userprofile.profile_img.url }}" class="img-circle img-responsive"> </div>
+<div class=" col-md-9 col-lg-9 ">
+<table class="table table-user-information">
+<tbody>
+  <tr>
+    <td>Username : </td>
+    <td>{{ profile.username }}</td>
+  </tr>
+  <tr>
+    <td>E-mail : </td>
+    <td>{{ profile.email }}</td>
+  </tr>
+  <tr>
+    <td>Nickname : </td>
+    <td>{{ profile.userprofile.nickname }}</td>
+  </tr>
+
+   <tr>
+    <td>Job : </td>
+    <td>{{ profile.userprofile.job }}</td>
+  </tr>
+  <tr>
+    <td>Level : </td>
+    <td>{% if profile.groups.all.0 is None %}
+          Member
+        {% else %}
+          {{ profile.groups.all.0 }}
+        {% endif %}</td>
+  </tr>
+  <tr>
+    <td>Desciption : </td>
+    <td>{{ profile.userprofile.description }}</td>
+  </tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+
+</div>
+</center>
+{% endblock %}

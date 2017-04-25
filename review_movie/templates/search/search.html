@@ -117,7 +117,7 @@ span{color: #fff;}
             <a href="{% url 'review_movie:movie' result.object.id %}"><img class="imgpos"src="{{ result.object.movie_poster.url }}" alt="{{ result.name }}"></a>
             <div class="caption">
               <a href="{% url 'review_movie:movie' result.object.id %}"><h3>{{ result.name }}</h3></a>
-              <p>Rating: {{ result.rating|floatformat:1 }}/10</p>
+              <p>Rating: {{ result.object.rating|floatformat:1 }}/10</p>
             </div>
           </div>
         </div>

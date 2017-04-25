@@ -187,10 +187,10 @@ class CalculateRatingDelete(PermissionRequiredMixin, UpdateView):
         rating = 0
         for review in reviews:
             rating += review.rating
-            try:
-                rating /= len(reviews)
-            except ZeroDivisionError:
-                rating = 0.0
+        try:
+            rating /= len(reviews)
+        except ZeroDivisionError:
+            rating = 0.0
         movie.rating = rating
         movie.save()
         return HttpResponseRedirect(reverse('review_movie:movie', kwargs={'pk': self.kwargs['pk']}))
@@ -210,10 +210,10 @@ class CalculateRating(PermissionRequiredMixin, UpdateView):
         rating = 0
         for review in reviews:
             rating += review.rating
-            try:
-                rating /= len(reviews)
-            except ZeroDivisionError:
-                rating = 0.0
+        try:
+            rating /= len(reviews)
+        except ZeroDivisionError:
+            rating = 0.0
         movie.rating = rating
         movie.save()
         return HttpResponseRedirect(reverse('review_movie:review', kwargs={'pk': self.kwargs['pk'], 'review_pk': self.kwargs['review_pk']}))
@@ -302,3 +302,12 @@ class UpdateBalance(LoginRequiredMixin, UpdateView):
         user.userprofile.balance = balance
         user.userprofile.save()
         return redirect('review_movie:profile')
+
+
+class LookProfile(DetailView):
+    template_name = "review_movie/look_profile.html"
+    context_object_name = "profile"
+
+    def get_queryset(self):
+        look_user = User.objects.filter(pk=self.kwargs['pk'])
+        return look_user

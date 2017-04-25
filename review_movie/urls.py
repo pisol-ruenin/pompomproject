@@ -38,4 +38,6 @@ urlpatterns = [
         name='reviewer_request_update'),
     url(r'^profile/(?P<pk>[0-9]+)/update_balance/$',
         views.UpdateBalance.as_view(), name='update_balance'),
+    url(r'^look_profile/(?P<pk>[0-9]+)/$',
+        views.LookProfile.as_view(), name='look_profile'),
 ]
