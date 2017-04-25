@@ -17,9 +17,11 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from django.conf import settings
 from django.conf.urls.static import static
+from django.http import HttpResponseRedirect
 
 urlpatterns = [
     #url(r'^$', include('review_movie.urls')),
+    url(r'^$', lambda r: HttpResponseRedirect('review_movie')),
     url(r'^admin/', admin.site.urls),
     url(r'^review_movie/', include('review_movie.urls'))
 ]
@@ -27,4 +29,5 @@ urlpatterns = [
 if settings.DEBUG:
     urlpatterns += static(settings.STATIC_URL,
                           document_root=settings.STATIC_ROOT)
-    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+    urlpatterns += static(settings.MEDIA_URL,
+                          document_root=settings.MEDIA_ROOT)

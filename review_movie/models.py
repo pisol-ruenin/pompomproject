@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.core.urlresolvers import reverse
 from django.core.validators import MaxValueValidator, MinValueValidator
 from ckeditor.fields import RichTextField
+from hitcount.models import HitCount, HitCountMixin
 
 boolean_choices = (
     (True, "Confirm"),
@@ -35,13 +36,14 @@ class UserProfile(models.Model):
     job = models.CharField(max_length=50, blank=True)
     profile_img = models.ImageField(
         default='default/defult_profile.png', blank=True)
+    description = models.TextField(max_length=150, blank=True)
     balance = models.FloatField(default=0)
 
     def __str__(self):
         return str(self.user)
 
 
-class Review(models.Model):
+class Review(models.Model, HitCountMixin):
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     topic = models.CharField(max_length=50)
     review = RichTextField(max_length=8000)
@@ -70,4 +72,4 @@ class ReviewerRequest(models.Model):
         return reverse('review_movie:request_view', kwargs={'pk': self.movie.pk, 'review_pk': self.pk})
 
     def __str__(self):
-        return self.topic + ' ' + str(self.user)
+        return self.topic + ' by ' + str(self.user) + '(' + str(self.confirm) + ')'

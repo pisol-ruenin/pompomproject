@@ -98,17 +98,6 @@ $(document).ready(function() {
     <td>Username : </td>
     <td>{{ request.user.username }}</td>
   </tr>
-<!-- <<<<<<< HEAD -->
-  <!-- <tr>
-    <td>Firstname : </td>
-    <td>{{ request.user.firstname }}</td>
-  </tr>
-  <tr>
-    <td>Lastname : </td>
-    <td>{{ request.user.lastname }}</td>
-  </tr> -->
-<!-- =======
->>>>>>> origin/master -->
   <tr>
     <td>E-mail : </td>
     <td>{{ request.user.email }}</td>
@@ -132,7 +121,11 @@ $(document).ready(function() {
   </tr>
   <tr>
     <td>Balance : </td>
-    <td>{{ request.user.userprofile.balance }} Baht</td>
+    <td>{{ request.user.userprofile.balance }} Baht <a href="{% url 'review_movie:update_balance' request.user.pk %}"><button class="btn btn-info">Update</button></a></td>
+  </tr>
+  <tr>
+    <td>Desciption : </td>
+    <td>{{ request.user.userprofile.description }}</td>
   </tr>
 </tbody>
 </table>
@@ -143,7 +136,6 @@ $(document).ready(function() {
 <div class="panel-footer">
     <span class="pull-right">
       <a href="{% url 'review_movie:update_profile' request.user.pk %}" class="btn btn-warning">แก้ไขข้อมูล <i class="glyphicon glyphicon-edit"></i></a>
-        <!-- <a data-original-title="Remove this user" data-toggle="tooltip" type="button" class="btn btn-sm btn-danger"><i class="glyphicon glyphicon-remove"></i></a> -->
     </span><br><br>
 </div>
 
