@@ -4,11 +4,11 @@
 
 ## Introduction
 
-Final project for [204113] Principles of Computing
+Final project for [204113] Principles of Computing.
 
-Website for reviewer and someone who interest in movie.
+Our project is **Free Popcorn**.
 
-Free Popcorn is website that reviewer can get income from review movie.
+**Free Popcorn** is website for reviewer and someone who love in movie,furthermore reviewer can get income from review.
 
 ## Run
 
