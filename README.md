@@ -6,9 +6,7 @@
 
 Final project for [204113] Principles of Computing.
 
-Our project is **Free Popcorn**.
-
-**Free Popcorn** is website for reviewer and someone who love in movie,furthermore reviewer can get income from review.
+Our project is **Free Popcorn**, website for reviewer and someone who love in movie,furthermore reviewer can get income from review.
 
 ## Run
 
